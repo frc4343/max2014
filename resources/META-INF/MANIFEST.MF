@@ -1,0 +1,6 @@
+MIDlet-Name: max2014
+MIDlet-Version: 1.0.0
+MIDlet-Vendor: FIRST
+MIDlet-1: RobotTemplate, , ca._4343.max3.RobotTemplate
+MicroEdition-Profile: IMP-1.0
+MicroEdition-Configuration: CLDC-1.1
