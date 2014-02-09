@@ -20,7 +20,7 @@ public class DriveTrain extends PIDSubsystem {
     private static final double Ki = 0.0;
     private static final double Kd = 0.0;
 
-    private RobotDrive drive = new RobotDrive(RobotMap.pwm_leftMotorPair, RobotMap.pwm_rightMotorPair);
+    private RobotDrive drive = new RobotDrive(RobotMap.pwm_rightMotorPair, RobotMap.pwm_leftMotorPair);
     // Initialize your subsystem here
     public DriveTrain() {
         super("DriveTrain", Kp, Ki, Kd);
@@ -52,6 +52,6 @@ public class DriveTrain extends PIDSubsystem {
         drive.tankDrive(left, right);
     }
     public void arcadeDrive(double x, double y) {
-        drive.tankDrive(x, y);
+        drive.arcadeDrive(x, y);
     }
 }

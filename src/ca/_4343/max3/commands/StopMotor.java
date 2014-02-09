@@ -7,14 +7,12 @@ package ca._4343.max3.commands;
 
 /**
  *
- * @author brianho
+ * @author Administrator
  */
-public class Launch extends CommandBase {
+public class StopMotor extends CommandBase {
     
-    public Launch() {
-        requires(launcherPiston);
-        requires(launcher);
-        setTimeout(.001);
+    public StopMotor() {
+        requires(pickup);
     }
 
     // Called just before this Command runs the first time
@@ -23,22 +21,16 @@ public class Launch extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(!isTimedOut() && launcher.isReadyToLoadOrFire()) {
-            launcher.pulseMotor();
-            launcherPiston.extend();
-        } else if (isTimedOut()) {
-            launcher.set(0);
-        }
+        pickup.doNothing();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !launcher.isReadyToLoadOrFire();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        launcherPiston.retract();
     }
 
     // Called when another command which requires one or more of the same

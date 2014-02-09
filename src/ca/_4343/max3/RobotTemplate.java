@@ -28,11 +28,7 @@ import ca._4343.max3.subsystems.Pneumatics;
  * directory.
  */
 public class RobotTemplate extends IterativeRobot {
-    Pneumatics pneumatics = new Pneumatics();
-    public static PickUp pickup = new PickUp();
-    public static DriveTrain drivetrain = new DriveTrain();
-    public static Launcher launcher = new Launcher();
-    Logger logger = new Logger();
+    
     Command autonomousCommand;
 
     /**
@@ -72,7 +68,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        printConsoleOutput();
+        //printConsoleOutput();
     }
     
     /**
@@ -81,15 +77,5 @@ public class RobotTemplate extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
-    private void printConsoleOutput() {
-        // Clears driverStation text.
-        logger.clearWindow();
-        // Print the tank pressurization state.
-        logger.printLine(DriverStationLCD.Line.kUser1, "Tanks: " + (pneumatics.compressor.getPressureSwitchValue() ? "FULL" : "COMPRESSING"));
-        logger.printLine(DriverStationLCD.Line.kUser2, "Launcher: " +  (launcher.isReadyToLoadOrFire() ? "Ready2Load" : "NOT FULLY DOWN"));
-        // Updates the output window.
-        logger.updateLCD();
-        // Prints the current gyro angle.
-        //logger.printLine(Line.kUser1, "Gyro value: " + (gyroSystem.gyro.getAngle()));
-    }
+    
 }
