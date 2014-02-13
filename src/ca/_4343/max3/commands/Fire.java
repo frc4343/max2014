@@ -5,16 +5,17 @@
  */
 package ca._4343.max3.commands;
 
+import ca._4343.max3.RobotMap;
+import edu.wpi.first.wpilibj.DigitalInput;
+
 /**
  *
- * @author brianho
+ * @author Administrator
  */
-public class Launch extends CommandBase {
-    
-    public Launch() {
-        requires(launcher);
+public class Fire extends CommandBase {
+    DigitalInput extendedlimitSwitch = new DigitalInput(RobotMap.gpio_transmission_extended);
+    public Fire() {
         requires(transmission);
-        setTimeout(.001);
     }
 
     // Called just before this Command runs the first time
@@ -23,16 +24,12 @@ public class Launch extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-         transmission.extend();
+        transmission.extend();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (launcher.isReadyToLoadOrFire()) {
-            return isTimedOut();
-        } else {
-            return false;
-        }
+        return extendedlimitSwitch.get();
     }
 
     // Called once after isFinished returns true

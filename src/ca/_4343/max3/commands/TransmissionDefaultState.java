@@ -9,10 +9,10 @@ package ca._4343.max3.commands;
  *
  * @author Administrator
  */
-public class StopMotor extends CommandBase {
+public class TransmissionDefaultState extends CommandBase {
     
-    public StopMotor() {
-        requires(pickup);
+    public TransmissionDefaultState() {
+        requires(transmission);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class StopMotor extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        pickup.doNothing();
+        transmission.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()

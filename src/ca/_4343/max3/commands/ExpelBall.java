@@ -11,6 +11,8 @@ package ca._4343.max3.commands;
  */
 public class ExpelBall extends CommandBase {
     
+    final double BALL_TIMEOUT = 1.8;
+    
     public ExpelBall() {
         requires(pickup);
         requires(pickupPistons);
@@ -18,6 +20,7 @@ public class ExpelBall extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        setTimeout(BALL_TIMEOUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,11 +31,12 @@ public class ExpelBall extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (this.isTimedOut());
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        //pickupPistons.extend();
     }
 
     // Called when another command which requires one or more of the same

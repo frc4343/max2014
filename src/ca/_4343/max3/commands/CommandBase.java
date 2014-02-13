@@ -9,6 +9,7 @@ import ca._4343.max3.subsystems.Launcher;
 import ca._4343.max3.subsystems.PickUp;
 import ca._4343.max3.subsystems.Piston;
 import ca._4343.max3.subsystems.Pneumatics;
+import ca._4343.max3.subsystems.Transmission;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 
 /**
@@ -25,8 +26,9 @@ public abstract class CommandBase extends Command {
     public static DriveTrain drivetrain = new DriveTrain();
     public static Launcher launcher = new Launcher();
     public static Pneumatics pneumatics = new Pneumatics();
-    public static Piston launcherPiston = new Piston((byte) 1,(byte) 2, true);
+    //public static Piston launcherPiston = new Piston((byte) 1,(byte) 2, true);
     public static Piston pickupPistons = new Piston((byte) 3,(byte) 4, true);
+    public static Transmission transmission = new Transmission();
    // Logger logger = new Logger();
 
     public static void init() {

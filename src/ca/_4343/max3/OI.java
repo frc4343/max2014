@@ -6,10 +6,12 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import ca._4343.max3.commands.ExpelBall;
+import ca._4343.max3.commands.Fire;
 import ca._4343.max3.commands.Launch;
+import ca._4343.max3.commands.LaunchSequence;
 import ca._4343.max3.commands.PickupBall;
 import ca._4343.max3.commands.PrepareLauncherForPickup;
-import ca._4343.max3.commands.StopMotor;
+import ca._4343.max3.commands.RetractTransmission;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -35,12 +37,12 @@ public class OI {
         return Math.abs(xbox1.getRawAxis(1)) >= 0.2 ? -xbox1.getRawAxis(1) : 0;
     }
     public OI() {
-        System.out.println(xbox1.getRawAxis(1));
         xbox1_L1.whenPressed(new PrepareLauncherForPickup());
-        xbox1_R1.whenPressed(new Launch());
-        xbox1_X.whenPressed(new StopMotor());
-        xbox1_X.whileHeld(new ExpelBall());
-        xbox1_Y.whenPressed(new ExpelBall());
+        //xbox1_R1.whenPressed(new Launch());
+        xbox1_X.toggleWhenPressed(new ExpelBall());
+        xbox1_Y.toggleWhenPressed(new PickupBall());
+        xbox1_A.whenPressed(new Fire());
+        //xbox1_B.whenPressed(new RetractTransmission());
         
     }
 }

@@ -37,10 +37,10 @@ public class PickUp extends Subsystem {
         
     }
     public void load() {
-        pickUpRollers.set(1);
+        pickUpRollers.set(-1);
     }
     public void expel() {
-        pickUpRollers.set(-1);
+        pickUpRollers.set(1);
     }
     public void doNothing() {
         pickUpRollers.set(0);
