@@ -53,6 +53,7 @@ public class DriveTrain extends PIDSubsystem {
     }
     public void arcadeDrive(double x, double y) {
         
-        drive.arcadeDrive(x, y < 0 ? -(y*y) : (y*y));
+        //drive.arcadeDrive(x, y < 0 ? -(y*y) : (y*y));
+        drive.arcadeDrive(x, y);
     }
 }

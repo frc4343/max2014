@@ -23,9 +23,10 @@ public class PrepareLauncherForPickup extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         
-        launcher.set(0.25);
+        launcher.set(0.50);
         if(transmission.retract()) {
             launcher.set(1);
+            
             transmission.stop();
         } 
         

@@ -9,6 +9,7 @@ import ca._4343.max3.RobotMap;
 import ca._4343.max3.commands.TransmissionDefaultState;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,17 +23,22 @@ public class Transmission extends Subsystem {
     // here. Call these from Commands.
     SpeedController motor = new Victor(6);
     DigitalInput retractedlimitSwitch = new DigitalInput(RobotMap.gpio_transmission_retracted);
+    Timer superTimer = new Timer();
     public void initDefaultCommand() {
         setDefaultCommand(new TransmissionDefaultState());
     }
     public void extend() {
-            motor.set(.5); 
+            motor.set(1); 
     }
     public boolean retract(){
-            motor.set(-.5);
-            return retractedlimitSwitch.get();
+            superTimer.reset();
+            superTimer.start();
+            motor.set(-.15);
+            
+            return retractedlimitSwitch.get() || superTimer.get() > 0.314;
     }
     public void stop(){
         motor.set(0);
+        superTimer.stop();
     }
 }

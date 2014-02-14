@@ -16,24 +16,36 @@ public class Fire extends CommandBase {
     DigitalInput extendedlimitSwitch = new DigitalInput(RobotMap.gpio_transmission_extended);
     public Fire() {
         requires(transmission);
+        requires(pickupPistons);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        pickupPistons.extend();
+        this.setTimeout(4.4);
+        
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        transmission.extend();
+        if (!extendedlimitSwitch.get() && this.isTimedOut()) {
+            transmission.extend();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return extendedlimitSwitch.get();
+        if (extendedlimitSwitch.get()) {
+            transmission.stop();
+        }
+        this.setTimeout(0.5);
+        return extendedlimitSwitch.get() && this.isTimedOut();
     }
 
+    
     // Called once after isFinished returns true
     protected void end() {
+        
     }
 
     // Called when another command which requires one or more of the same

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import ca._4343.max3.commands.ExpelBall;
 import ca._4343.max3.commands.Fire;
+import ca._4343.max3.commands.FireAndReload;
 import ca._4343.max3.commands.Launch;
 import ca._4343.max3.commands.LaunchSequence;
 import ca._4343.max3.commands.PickupBall;
@@ -31,7 +32,7 @@ public class OI {
     Button xbox1_L1 = new JoystickButton(xbox1, 5);
     Button xbox1_R1 = new JoystickButton(xbox1, 6);
     public double getX() {
-        return xbox1.getRawAxis(3);
+        return Math.abs(xbox1.getRawAxis(3)) >= 0.2 ? xbox1.getRawAxis(3) : 0; 
     }
     public double getY() {
         return Math.abs(xbox1.getRawAxis(1)) >= 0.2 ? -xbox1.getRawAxis(1) : 0;
@@ -41,7 +42,7 @@ public class OI {
         //xbox1_R1.whenPressed(new Launch());
         xbox1_X.toggleWhenPressed(new ExpelBall());
         xbox1_Y.toggleWhenPressed(new PickupBall());
-        xbox1_A.whenPressed(new Fire());
+        xbox1_A.whenPressed(new FireAndReload());
         //xbox1_B.whenPressed(new RetractTransmission());
         
     }
