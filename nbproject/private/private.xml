@@ -3,16 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/FireAndReload.java</file>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/Extras/TargetReport.java</file>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/subsystems/AxisCameraSubsystem.java</file>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/Fire.java</file>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/OI.java</file>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/RobotMap.java</file>
+            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/LauncherDoNothing.java</file>
+            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/Autonomous/middle/AutonomousMiddleSequence.java</file>
+            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/Extras/FindTarget.java</file>
+            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/Autonomous/middle/CheckDirections.java</file>
             <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/CommandBase.java</file>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/TrackTarget.java</file>
+            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/RobotMap.java</file>
             <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/RobotTemplate.java</file>
-            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/subsystems/DriveTrain.java</file>
+            <file>file:/C:/Users/CC/Documents/GitHub/max2014/src/ca/_4343/max3/commands/Autonomous/middle/AutonomousPickupBall.java</file>
         </group>
     </open-files>
 </project-private>

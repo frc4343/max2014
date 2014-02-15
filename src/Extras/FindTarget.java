@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca._4343.max3.commands;
 
-import Extras.Scores;
-import Extras.TargetReport;
+package Extras;
+
+import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.camera.AxisCameraException;
 import edu.wpi.first.wpilibj.image.BinaryImage;
 import edu.wpi.first.wpilibj.image.ColorImage;
@@ -20,9 +20,8 @@ import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
  *
  * @author CC
  */
-public class TrackTarget extends CommandBase {
+public class FindTarget {
     
-    //Camera constants used for distance calculation
     final int Y_IMAGE_RES = 480;		//X Image resolution in pixels, should be 120, 240 or 480
     //final double VIEW_ANGLE = 49;		//Axis M1013
     //final double VIEW_ANGLE = 41.7;		//Axis 206 camera
@@ -39,52 +38,46 @@ public class TrackTarget extends CommandBase {
     final int LR_SCORE_LIMIT = 50;
 
     //Minimum area of particles to be considered
-    final int AREA_MINIMUM = 140;
+    final int AREA_MINIMUM = 150;
 
     //Maximum number of particles to process
     final int MAX_PARTICLES = 8;
-    
-    final float compensation = 0.48666f;
-    
-    CriteriaCollection cc;
-    
-    boolean finished = false;
-    
-    
-    public TrackTarget() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-        requires(axiscamerasubsytem);
-        System.out.println("REACHEED BRO");
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
+    AxisCamera camera;          // the axis camera object (connected to the switch)
+    CriteriaCollection cc;      // the criteria for doing the particle filter operation
+    
+    public class Scores {
+        double rectangularity;
+        double aspectRatioVertical;
+        double aspectRatioHorizontal;
+    }
+    
+    public class TargetReport {
+		int verticalIndex;
+		int horizontalIndex;
+		boolean Hot;
+		double totalScore;
+		double leftScore;
+		double rightScore;
+		double tapeWidthScore;
+		double verticalScore;
+    };
+    
+    public FindTarget() {
+        camera = AxisCamera.getInstance();  // get an instance of the camera
         cc = new CriteriaCollection();      // create the criteria for the particle filter
-        cc.addCriteria(NIVision.MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);   
+        cc.addCriteria(MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        
-            TargetReport target = new TargetReport();
+    public boolean targetFound() {
+	TargetReport target = new TargetReport();
 	int verticalTargets[] = new int[MAX_PARTICLES];
 	int horizontalTargets[] = new int[MAX_PARTICLES];
 	int verticalTargetCount, horizontalTargetCount;
             try {
-                /**
-                 * Do the image capture with the camera and apply the algorithm described above. This
-                 * sample will either get images from the camera or from an image file stored in the top
-                 * level directory in the flash memory on the cRIO. The file name in this case is "testImage.jpg"
-                 * 
-                 */
-                ColorImage image = axiscamerasubsytem.getAxisCameraInstance().getImage();     // comment if using stored images
-                //ColorImage image;                       // next 2 lines read image from flash on cRIO
-                //image = new RGBImage("/testImage.jpg");		// get the sample image from the cRIO flash
+                ColorImage image = camera.getImage(); 	// get the sample image from the cRIO flash
                 BinaryImage thresholdImage = image.thresholdHSV(67, 91, 221, 255, 228, 255);   // keep only green objects
-                //thresholdImage.write("/threshold.bmp");
                 BinaryImage filteredImage = thresholdImage.particleFilter(cc);           // filter out small particles
-                //filteredImage.write("/filteredImage.bmp");
                 
                 //iterate through each particle and score to see if it is a target
                 Scores scores[] = new Scores[filteredImage.getNumberParticles()];
@@ -104,16 +97,16 @@ public class TrackTarget extends CommandBase {
 			//Check if the particle is a horizontal target, if not, check if it's a vertical target
 			if(scoreCompare(scores[i], false))
 			{
-                            //System.out.println("particle: " + i + "is a Horizontal Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+                            System.out.println("particle: " + i + "is a Horizontal Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
                             horizontalTargets[horizontalTargetCount++] = i; //Add particle to target array and increment count
 			} else if (scoreCompare(scores[i], true)) {
-                            //System.out.println("particle: " + i + "is a Vertical Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+                            System.out.println("particle: " + i + "is a Vertical Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
                             verticalTargets[verticalTargetCount++] = i;  //Add particle to target array and increment count
 			} else {
-                           // System.out.println("particle: " + i + "is not a Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+                            System.out.println("particle: " + i + "is not a Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
 			}
-                            //System.out.println("rect: " + scores[i].rectangularity + "ARHoriz: " + scores[i].aspectRatioHorizontal);
-                            //System.out.println("ARVert: " + scores[i].aspectRatioVertical);	
+                            System.out.println("rect: " + scores[i].rectangularity + "ARHoriz: " + scores[i].aspectRatioHorizontal);
+                            System.out.println("ARVert: " + scores[i].aspectRatioVertical);	
 			}
 
 			//Zero out scores and set verticalIndex to first target in case there are no horizontal targets
@@ -168,12 +161,12 @@ public class TrackTarget extends CommandBase {
                                     double distance = computeDistance(filteredImage, distanceReport, target.verticalIndex);
                                     if(target.Hot)
                                     {
-                                            System.out.println("----------Target----------");
-                                            finished = true;
-                                            //System.out.println("Distance: " + distance);
+                                            System.out.println("----------TARGET----------");
+                                            return true;
                                     } else {
-                                            System.out.println("----------No Target----------");
-                                            //System.out.println("Distance: " + distance);
+                                            System.out.println("----------NO TARGET----------");
+                                            return false;
+                                            
                                     }
                             }
                 }
@@ -188,26 +181,11 @@ public class TrackTarget extends CommandBase {
                 image.free();
                 
             } catch (AxisCameraException ex) {        // this is needed if the camera.getImage() is called
-                ex.printStackTrace();
+               ex.printStackTrace();
             } catch (NIVisionException ex) {
                 ex.printStackTrace();
             }
-        }
-    
-    
-    /**
-     * Computes a score (0-100) estimating how rectangular the particle is by comparing the area of the particle
-     * to the area of the bounding box surrounding it. A perfect rectangle would cover the entire bounding box.
-     * 
-     * @param report The Particle Analysis Report for the particle to score
-     * @return The rectangularity score (0-100)
-     */
-    double scoreRectangularity(ParticleAnalysisReport report){
-            if(report.boundingRectWidth*report.boundingRectHeight !=0){
-                    return 100*report.particleArea/(report.boundingRectWidth*report.boundingRectHeight);
-            } else {
-                    return 0;
-            }	
+        return false;
     }
     
     /**
@@ -223,7 +201,7 @@ public class TrackTarget extends CommandBase {
             double rectLong, height;
             int targetHeight;
 
-            rectLong = NIVision.MeasureParticle(image.image, particleNumber, false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
+            rectLong = NIVision.MeasureParticle(image.image, particleNumber, false, MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
             //using the smaller of the estimated rectangle long side and the bounding rectangle height results in better performance
             //on skewed rectangles
             height = Math.min(report.boundingRectHeight, rectLong);
@@ -247,8 +225,8 @@ public class TrackTarget extends CommandBase {
     {
         double rectLong, rectShort, aspectRatio, idealAspectRatio;
 
-        rectLong = NIVision.MeasureParticle(image.image, particleNumber, false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
-        rectShort = NIVision.MeasureParticle(image.image, particleNumber, false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
+        rectLong = NIVision.MeasureParticle(image.image, particleNumber, false, MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
+        rectShort = NIVision.MeasureParticle(image.image, particleNumber, false, MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
         idealAspectRatio = vertical ? (4.0/32) : (23.5/4);	//Vertical reflector 4" wide x 32" tall, horizontal 23.5" wide x 4" tall
 	
         //Divide width by height to measure aspect ratio
@@ -283,6 +261,20 @@ public class TrackTarget extends CommandBase {
 	return isTarget;
     }
     
+    /**
+     * Computes a score (0-100) estimating how rectangular the particle is by comparing the area of the particle
+     * to the area of the bounding box surrounding it. A perfect rectangle would cover the entire bounding box.
+     * 
+     * @param report The Particle Analysis Report for the particle to score
+     * @return The rectangularity score (0-100)
+     */
+    double scoreRectangularity(ParticleAnalysisReport report){
+            if(report.boundingRectWidth*report.boundingRectHeight !=0){
+                    return 100*report.particleArea/(report.boundingRectWidth*report.boundingRectHeight);
+            } else {
+                    return 0;
+            }	
+    }
     
     	/**
 	 * Converts a ratio with ideal value of 1 to a score. The resulting function is piecewise
@@ -309,18 +301,5 @@ public class TrackTarget extends CommandBase {
 		
 		return isHot;
 	}
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-         return finished;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+    
 }

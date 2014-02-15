@@ -8,12 +8,14 @@
 package ca._4343.max3;
 
 
+import ca._4343.max3.commands.Autonomous.middle.AutonomousMiddleSequence;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import ca._4343.max3.commands.CommandBase;
-import ca._4343.max3.commands.TrackTarget;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,28 +25,26 @@ import ca._4343.max3.commands.TrackTarget;
  * directory.
  */
 public class RobotTemplate extends IterativeRobot {
-    
-    Command TrackTargetTest;
-
+    SendableChooser pickAutonomousMode;
+    CommandGroup autoCommand;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        TrackTargetTest = new TrackTarget();
         // instantiate the command used for the autonomous period
         //autonomousCommand = new ExampleCommand();
 
-        // Initialize all subsystems
-        
+        initializeVirtualButtons();
         CommandBase.init();
+        RobotMap.ds = this.m_ds;
     }
+   
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
-        //autonomousCommand.start();
-        TrackTargetTest.start();
-        System.out.println("Starting Auto");
+        autoCommand = (CommandGroup) pickAutonomousMode.getSelected();
+        autoCommand.start();
+        System.out.println("Starting Autonomous");
         
     }
 
@@ -77,5 +77,13 @@ public class RobotTemplate extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+    
+    private void initializeVirtualButtons() {
+        pickAutonomousMode = new SendableChooser();
+        pickAutonomousMode.addDefault("Center Position", new AutonomousMiddleSequence());
+        SmartDashboard.putData("Select Autonomous Mode", pickAutonomousMode);
+    }
+    
+    
     
 }

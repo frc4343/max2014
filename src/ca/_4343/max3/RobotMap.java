@@ -1,5 +1,7 @@
 package ca._4343.max3;
 
+import edu.wpi.first.wpilibj.DriverStation;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -24,6 +26,8 @@ public class RobotMap {
             gpio_transmission_retracted = 5,
             // CRIO - ANALOG MODULE
             crio_analogModule_GyroSensor = 3;
+    
+    public static DriverStation ds;
             
 
 }
