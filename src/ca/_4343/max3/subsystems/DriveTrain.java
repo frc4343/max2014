@@ -21,6 +21,8 @@ public class DriveTrain extends PIDSubsystem {
     private static final double Kd = 0.0;
 
     private RobotDrive drive = new RobotDrive(RobotMap.pwm_rightMotorPair, RobotMap.pwm_leftMotorPair);
+    //private SpeedController victorLeft = new Victor(RobotMap.pwm_leftMotorPair);
+    //private SpeedController victorRight = new Victor(RobotMap.pwm_rightMotorPair);
     // Initialize your subsystem here
     public DriveTrain() {
         super("DriveTrain", Kp, Ki, Kd);
@@ -33,7 +35,7 @@ public class DriveTrain extends PIDSubsystem {
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new DriveWithJoysticks());
+            setDefaultCommand(new DriveWithJoysticks());
     }
     
     protected double returnPIDInput() {
@@ -48,6 +50,15 @@ public class DriveTrain extends PIDSubsystem {
         // e.g. yourMotor.set(output);
         tankDrive(output, output);
     }
+    
+    public void disableSafety() { //Will stop "robot drive not updated enough" when enabled
+        drive.setSafetyEnabled(false);
+    }
+    
+    public void enableSafety() { //Enablet this when you want to drive
+        drive.setSafetyEnabled(true);
+    }
+    
     public void tankDrive(double left, double right) {
         drive.tankDrive(left, right);
     }

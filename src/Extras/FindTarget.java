@@ -43,7 +43,7 @@ public class FindTarget {
     //Maximum number of particles to process
     final int MAX_PARTICLES = 8;
 
-    AxisCamera camera;          // the axis camera object (connected to the switch)
+    private AxisCamera camera;          // the axis camera object (connected to the switch)
     CriteriaCollection cc;      // the criteria for doing the particle filter operation
     
     public class Scores {
@@ -64,7 +64,7 @@ public class FindTarget {
     };
     
     public FindTarget() {
-        camera = AxisCamera.getInstance();  // get an instance of the camera
+        this.camera = Camera.getCamera();
         cc = new CriteriaCollection();      // create the criteria for the particle filter
         cc.addCriteria(MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
@@ -75,8 +75,8 @@ public class FindTarget {
 	int horizontalTargets[] = new int[MAX_PARTICLES];
 	int verticalTargetCount, horizontalTargetCount;
             try {
-                ColorImage image = camera.getImage(); 	// get the sample image from the cRIO flash
-                BinaryImage thresholdImage = image.thresholdHSV(67, 91, 221, 255, 228, 255);   // keep only green objects
+                ColorImage image = camera.getImage();
+                BinaryImage thresholdImage = image.thresholdHSV(78, 91, 243, 255, 100, 255);   // keep only green objects
                 BinaryImage filteredImage = thresholdImage.particleFilter(cc);           // filter out small particles
                 
                 //iterate through each particle and score to see if it is a target
@@ -97,16 +97,16 @@ public class FindTarget {
 			//Check if the particle is a horizontal target, if not, check if it's a vertical target
 			if(scoreCompare(scores[i], false))
 			{
-                            System.out.println("particle: " + i + "is a Horizontal Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+                            //System.out.println("particle: " + i + "is a Horizontal Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
                             horizontalTargets[horizontalTargetCount++] = i; //Add particle to target array and increment count
 			} else if (scoreCompare(scores[i], true)) {
-                            System.out.println("particle: " + i + "is a Vertical Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+                            //System.out.println("particle: " + i + "is a Vertical Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
                             verticalTargets[verticalTargetCount++] = i;  //Add particle to target array and increment count
 			} else {
-                            System.out.println("particle: " + i + "is not a Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
+                           // System.out.println("particle: " + i + "is not a Target centerX: " + report.center_mass_x + "centerY: " + report.center_mass_y);
 			}
-                            System.out.println("rect: " + scores[i].rectangularity + "ARHoriz: " + scores[i].aspectRatioHorizontal);
-                            System.out.println("ARVert: " + scores[i].aspectRatioVertical);	
+                            //System.out.println("rect: " + scores[i].rectangularity + "ARHoriz: " + scores[i].aspectRatioHorizontal);
+                           // System.out.println("ARVert: " + scores[i].aspectRatioVertical);	
 			}
 
 			//Zero out scores and set verticalIndex to first target in case there are no horizontal targets

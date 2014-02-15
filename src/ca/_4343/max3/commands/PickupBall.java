@@ -40,7 +40,6 @@ public class PickupBall extends CommandBase {
     protected void execute() {
         //if(launcher.isReadyToLoadOrFire()) {
             pickupPistons.extend();
-            if(!pickup.isLoaded())
                 pickup.load();
         //}
     }
@@ -52,9 +51,7 @@ public class PickupBall extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        if(RobotMap.ds.isOperatorControl()) {
             pickupPistons.retract();
-        }  
     }
 
     // Called when another command which requires one or more of the same
