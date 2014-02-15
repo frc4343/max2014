@@ -8,17 +8,12 @@
 package ca._4343.max3;
 
 
-import ca._4343.max3.Logger;
-import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import ca._4343.max3.commands.CommandBase;
-import ca._4343.max3.subsystems.DriveTrain;
-import ca._4343.max3.subsystems.Launcher;
-import ca._4343.max3.subsystems.PickUp;
-import ca._4343.max3.subsystems.Pneumatics;
+import ca._4343.max3.commands.TrackTarget;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,23 +24,28 @@ import ca._4343.max3.subsystems.Pneumatics;
  */
 public class RobotTemplate extends IterativeRobot {
     
-    Command autonomousCommand;
+    Command TrackTargetTest;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+        TrackTargetTest = new TrackTarget();
         // instantiate the command used for the autonomous period
         //autonomousCommand = new ExampleCommand();
 
         // Initialize all subsystems
+        
         CommandBase.init();
     }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
         //autonomousCommand.start();
+        TrackTargetTest.start();
+        System.out.println("Starting Auto");
+        
     }
 
     /**

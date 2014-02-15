@@ -22,7 +22,7 @@ public class Fire extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         pickupPistons.extend();
-        this.setTimeout(4.4);
+        this.setTimeout(0.7);
         
     }
 
@@ -38,7 +38,6 @@ public class Fire extends CommandBase {
         if (extendedlimitSwitch.get()) {
             transmission.stop();
         }
-        this.setTimeout(0.5);
         return extendedlimitSwitch.get() && this.isTimedOut();
     }
 

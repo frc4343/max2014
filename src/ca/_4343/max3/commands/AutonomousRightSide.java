@@ -7,14 +7,13 @@ package ca._4343.max3.commands;
 
 /**
  *
- * @author brianho
+ * @author CC
  */
-public class Launch extends CommandBase {
+public class AutonomousRightSide extends CommandBase {
     
-    public Launch() {
-        requires(launcher);
-        requires(transmission);
-        setTimeout(.001);
+    public AutonomousRightSide() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -23,16 +22,11 @@ public class Launch extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-         transmission.extend();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (launcher.isReadyToLoadOrFire()) {
-            return isTimedOut();
-        } else {
-            return false;
-        }
+        return false;
     }
 
     // Called once after isFinished returns true

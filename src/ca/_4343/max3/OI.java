@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import ca._4343.max3.commands.ExpelBall;
 import ca._4343.max3.commands.Fire;
 import ca._4343.max3.commands.FireAndReload;
-import ca._4343.max3.commands.Launch;
-import ca._4343.max3.commands.LaunchSequence;
 import ca._4343.max3.commands.PickupBall;
 import ca._4343.max3.commands.PrepareLauncherForPickup;
 import ca._4343.max3.commands.RetractTransmission;
@@ -39,10 +37,12 @@ public class OI {
     }
     public OI() {
         xbox1_L1.whenPressed(new PrepareLauncherForPickup());
-        //xbox1_R1.whenPressed(new Launch());
+        
+        //xbox1_R1.whenPressed(new Fire());
         xbox1_X.toggleWhenPressed(new ExpelBall());
         xbox1_Y.toggleWhenPressed(new PickupBall());
         xbox1_A.whenPressed(new FireAndReload());
+        
         //xbox1_B.whenPressed(new RetractTransmission());
         
     }

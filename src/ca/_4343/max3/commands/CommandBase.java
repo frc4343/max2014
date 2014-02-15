@@ -4,6 +4,7 @@ import ca._4343.max3.Logger;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import ca._4343.max3.OI;
+import ca._4343.max3.subsystems.AxisCameraSubsystem;
 import ca._4343.max3.subsystems.DriveTrain;
 import ca._4343.max3.subsystems.Launcher;
 import ca._4343.max3.subsystems.PickUp;
@@ -29,6 +30,7 @@ public abstract class CommandBase extends Command {
     //public static Piston launcherPiston = new Piston((byte) 1,(byte) 2, true);
     public static Piston pickupPistons = new Piston((byte) 3,(byte) 4, true);
     public static Transmission transmission = new Transmission();
+    public static AxisCameraSubsystem axiscamerasubsytem = new AxisCameraSubsystem();
    // Logger logger = new Logger();
 
     public static void init() {
