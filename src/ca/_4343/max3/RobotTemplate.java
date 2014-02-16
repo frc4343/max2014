@@ -9,7 +9,7 @@ package ca._4343.max3;
 
 
 import Extras.Camera;
-import ca._4343.max3.commands.Autonomous.Regular.AutonomousRegularSequence;
+import ca._4343.max3.commands.Autonomous.Regular.AutonomousDefaultSequence;
 import ca._4343.max3.commands.Autonomous.middle.AutonomousMiddleSequence;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -36,11 +36,9 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         //autonomousCommand = new ExampleCommand();
-
         initializeVirtualButtons();
         CommandBase.init();
         Camera.init();
-        RobotMap.ds = this.m_ds;
     }
    
 
@@ -55,6 +53,7 @@ public class RobotTemplate extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+        RobotMap.ds = this.m_ds; // is this a cause for the errors?
         Scheduler.getInstance().run();
     }
 
@@ -70,6 +69,7 @@ public class RobotTemplate extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+        RobotMap.ds = this.m_ds; // is this a cause for the errors?
         Scheduler.getInstance().run();
         //printConsoleOutput();
     }
@@ -83,11 +83,18 @@ public class RobotTemplate extends IterativeRobot {
     
     private void initializeVirtualButtons() {
         pickAutonomousMode = new SendableChooser();
-        pickAutonomousMode.addDefault("Regular Autonomous", new AutonomousRegularSequence());
-        pickAutonomousMode.addObject("Center Position", new AutonomousMiddleSequence());
+        pickAutonomousMode.addDefault("Left Autonomous", new AutonomousDefaultSequence(true));
+        pickAutonomousMode.addDefault("Right Autonomous", new AutonomousDefaultSequence(false));
         SmartDashboard.putData("Select Autonomous Mode", pickAutonomousMode);
     }
     
-    
-    
+    /*private void printConsoleOutput() {
+        // Clears driverStation text.
+        logger.clearWindow();
+        // Print the tank pressurization state.
+        logger.printLine(DriverStationLCD.Line.kUser1, "Tanks: " + (pneumatics.compressor.getPressureSwitchValue() ? "FULL" : "COMPRESSING"));
+        logger.printLine(DriverStationLCD.Line.kUser2, "Launcher: " +  (launcher.isReadyToLoadOrFire() ? "Ready2Load" : "NOT FULLY DOWN"));
+        // Updates the output window.
+        logger.updateLCD();
+    }*/
 }

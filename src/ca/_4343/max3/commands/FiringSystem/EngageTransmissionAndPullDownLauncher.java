@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package ca._4343.max3.commands;
+package ca._4343.max3.commands.FiringSystem;
+
+import ca._4343.max3.commands.CommandBase;
 
 /**
  *
  * @author brianho
  */
-public class PrepareLauncherForPickup extends CommandBase {
+public class EngageTransmissionAndPullDownLauncher extends CommandBase {
     
-    public PrepareLauncherForPickup() {
+    public EngageTransmissionAndPullDownLauncher() {
         requires(launcher);
         requires(transmission);
     }
@@ -22,25 +19,23 @@ public class PrepareLauncherForPickup extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
         launcher.set(0.50);
-        if(transmission.retract()) {
-            launcher.set(1);
-            
+        if(!transmission.retracted()) {
+            transmission.retract();
+        } else {
             transmission.stop();
+            launcher.set(1); // Full Pulldown
         } 
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !launcher.isReadyToLoadOrFire();
+        return launcher.isReadyToLoadOrFire();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        launcher.set(0);
-        transmission.extend();
+        launcher.set(0); // Just Incase.... May not be necessary, but don't want recked robot.. could be a potential error causing agent
     }
 
     // Called when another command which requires one or more of the same

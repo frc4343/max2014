@@ -38,7 +38,7 @@ public class FindTarget {
     final int LR_SCORE_LIMIT = 50;
 
     //Minimum area of particles to be considered
-    final int AREA_MINIMUM = 150;
+    final int AREA_MINIMUM = 150; // used to be 140 in tedi's first version dont know if needs changing
 
     //Maximum number of particles to process
     final int MAX_PARTICLES = 8;
@@ -53,14 +53,14 @@ public class FindTarget {
     }
     
     public class TargetReport {
-		int verticalIndex;
-		int horizontalIndex;
-		boolean Hot;
-		double totalScore;
-		double leftScore;
-		double rightScore;
-		double tapeWidthScore;
-		double verticalScore;
+		public int verticalIndex;
+		public int horizontalIndex;
+		public boolean Hot;
+		public double totalScore;
+		public double leftScore;
+		public double rightScore;
+		public double tapeWidthScore;
+		public double verticalScore;
     };
     
     public FindTarget() {
@@ -69,7 +69,7 @@ public class FindTarget {
         cc.addCriteria(MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
 
-    public boolean targetFound() {
+public TargetReport giveMeATarget() {
 	TargetReport target = new TargetReport();
 	int verticalTargets[] = new int[MAX_PARTICLES];
 	int horizontalTargets[] = new int[MAX_PARTICLES];
@@ -161,11 +161,12 @@ public class FindTarget {
                                     double distance = computeDistance(filteredImage, distanceReport, target.verticalIndex);
                                     if(target.Hot)
                                     {
+                                            System.out.println("Target is on the " + (target.leftScore > target.rightScore ? "left" : "right") + " side");
                                             System.out.println("----------TARGET----------");
-                                            return true;
+                                            return target;
                                     } else {
                                             System.out.println("----------NO TARGET----------");
-                                            return false;
+                                            return null;
                                             
                                     }
                             }
@@ -185,7 +186,7 @@ public class FindTarget {
             } catch (NIVisionException ex) {
                 ex.printStackTrace();
             }
-        return false;
+        return null;
     }
     
     /**

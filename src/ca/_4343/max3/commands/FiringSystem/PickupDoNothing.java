@@ -2,49 +2,42 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ *//*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package ca._4343.max3.commands;
+package ca._4343.max3.commands.FiringSystem;
 
-import ca._4343.max3.RobotMap;
-import edu.wpi.first.wpilibj.DigitalInput;
+import ca._4343.max3.commands.CommandBase;
 
 /**
  *
- * @author Administrator
+ * @author Brian
  */
-public class Fire extends CommandBase {
-    DigitalInput extendedlimitSwitch = new DigitalInput(RobotMap.gpio_transmission_extended);
-    public Fire() {
-        requires(transmission);
-        requires(pickupPistons);
+public class PickupDoNothing extends CommandBase {
+    
+    public PickupDoNothing() {
+        requires(pickup);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        pickupPistons.extend();
-        this.setTimeout(0.7);
-        
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (!extendedlimitSwitch.get() && this.isTimedOut()) {
-            transmission.extend();
-        }
+        pickup.doNothing();
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (extendedlimitSwitch.get()) {
-            transmission.stop();
-        }
-        return extendedlimitSwitch.get() && this.isTimedOut();
+        return false;
     }
 
-    
     // Called once after isFinished returns true
     protected void end() {
-        
     }
 
     // Called when another command which requires one or more of the same

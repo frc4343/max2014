@@ -23,10 +23,8 @@ public abstract class CommandBase extends Command {
     public static DriveTrain drivetrain = new DriveTrain();
     public static Launcher launcher = new Launcher();
     public static Pneumatics pneumatics = new Pneumatics();
-    //public static Piston launcherPiston = new Piston((byte) 1,(byte) 2, true);
     public static Piston pickupPistons = new Piston((byte) 3,(byte) 4, true);
     public static Transmission transmission = new Transmission();
-   // Logger logger = new Logger();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
@@ -47,16 +45,4 @@ public abstract class CommandBase extends Command {
     public CommandBase() {
         super();
     }
-    
-    /*private void printConsoleOutput() {
-        // Clears driverStation text.
-        logger.clearWindow();
-        // Print the tank pressurization state.
-        logger.printLine(DriverStationLCD.Line.kUser1, "Tanks: " + (pneumatics.compressor.getPressureSwitchValue() ? "FULL" : "COMPRESSING"));
-        logger.printLine(DriverStationLCD.Line.kUser2, "Launcher: " +  (launcher.isReadyToLoadOrFire() ? "Ready2Load" : "NOT FULLY DOWN"));
-        // Updates the output window.
-        logger.updateLCD();
-        // Prints the current gyro angle.
-        //logger.printLine(Line.kUser1, "Gyro value: " + (gyroSystem.gyro.getAngle()));
-    }*/
 }

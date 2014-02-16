@@ -8,7 +8,7 @@ package ca._4343.max3.subsystems;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import ca._4343.max3.RobotMap;
-import ca._4343.max3.commands.DriveWithJoysticks;
+import ca._4343.max3.commands.Teleoperated.DriveWithJoysticks;
 
 /**
  *
@@ -55,15 +55,22 @@ public class DriveTrain extends PIDSubsystem {
         drive.setSafetyEnabled(false);
     }
     
-    public void enableSafety() { //Enablet this when you want to drive
+    public void enableSafety() { //Enable this when you want to drive
         drive.setSafetyEnabled(true);
     }
     
+    public void disableMotors() {
+        drive.stopMotor();
+    }
+    
     public void tankDrive(double left, double right) {
+        if(!drive.isSafetyEnabled()) //Just incase we disabled saftey earlier and forgot to enable
+            enableSafety();
         drive.tankDrive(left, right);
     }
     public void arcadeDrive(double x, double y) {
-        
+        if(!drive.isSafetyEnabled()) //Just incase we disabled saftey earlier and forgot to enable
+            enableSafety();
         //drive.arcadeDrive(x, y < 0 ? -(y*y) : (y*y));
         drive.arcadeDrive(x, y);
     }

@@ -34,7 +34,7 @@ public class CheckDirections extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("Stage: "+stage);
+      /* System.out.println("Stage: "+stage);
         if(stage == 0) {
             if(!this.isTimedOut()) {
                 drivetrain.tankDrive(0, 1); //Turn left
@@ -55,7 +55,7 @@ public class CheckDirections extends CommandBase {
             } else if (this.isTimedOut()) {
                  finished = true; //If left has no target, then right must be hot
             }
-        }
+        }*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

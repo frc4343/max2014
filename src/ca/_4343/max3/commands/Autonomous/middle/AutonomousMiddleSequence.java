@@ -6,9 +6,8 @@
 package ca._4343.max3.commands.Autonomous.middle;
 
 import ca._4343.max3.commands.Autonomous.AutonomousMoveForward;
-import ca._4343.max3.commands.Autonomous.ExtendPickup;
-import ca._4343.max3.commands.FireAndReload;
-import ca._4343.max3.commands.PickupBall;
+import ca._4343.max3.commands.Teleoperated.FireAndReload;
+import ca._4343.max3.commands.FiringSystem.ExtendPickupAndLoadBall;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -18,7 +17,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonomousMiddleSequence extends CommandGroup {
     
     public AutonomousMiddleSequence() {
-        addSequential(new ExtendPickup()); //Extend arm yee
+        //addSequential(new ExtendPickup()); //Extend arm yee
         addSequential(new CheckDirections()); //Check left and right for target, stop when detected
         //addSequential(new FireAndReload()); //Shoot ball  uncomment this when we're sure of sequencing
         //addSequential(new AutonomousMoveForward()); //Drive forward for 5 points, woot woot

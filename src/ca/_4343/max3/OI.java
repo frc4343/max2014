@@ -1,16 +1,15 @@
-
 package ca._4343.max3;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import ca._4343.max3.commands.ExpelBall;
-import ca._4343.max3.commands.Fire;
-import ca._4343.max3.commands.FireAndReload;
-import ca._4343.max3.commands.PickupBall;
-import ca._4343.max3.commands.PrepareLauncherForPickup;
-import ca._4343.max3.commands.RetractTransmission;
+import ca._4343.max3.commands.FiringSystem.RetractPickupAndExpelBall;
+import ca._4343.max3.commands.Teleoperated.FireAndReload;
+import ca._4343.max3.commands.FiringSystem.ExtendPickupAndLoadBall;
+import ca._4343.max3.commands.FiringSystem.EngageTransmissionAndPullDownLauncher;
+import ca._4343.max3.commands.FiringSystem.ExtendPickupAndDisengageTransmission;
+import ca._4343.max3.commands.VisionTest;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -31,20 +30,18 @@ public class OI {
     Button xbox1_L1 = new JoystickButton(xbox1, 5);
     Button xbox1_R1 = new JoystickButton(xbox1, 6);
     public double getX() {
-        return Math.abs(xbox1.getRawAxis(3)) >= 0.2 ? xbox1.getRawAxis(3) : 0; 
+        return xbox1.getRawAxis(3); 
     }
     public double getY() {
         return Math.abs(xbox1.getRawAxis(1)) >= 0.2 ? -xbox1.getRawAxis(1) : 0;
     }
     public OI() {
-        xbox1_L1.whenPressed(new PrepareLauncherForPickup());
-        
-        //xbox1_R1.whenPressed(new Fire());
-        xbox1_X.toggleWhenPressed(new ExpelBall());
-        xbox1_Y.toggleWhenPressed(new PickupBall());
-        xbox1_A.whenPressed(new FireAndReload());
-        
-        //xbox1_B.whenPressed(new RetractTransmission());
+        xbox1_L1.whenPressed(new EngageTransmissionAndPullDownLauncher()); // Load
+        xbox1_R1.whenPressed(new ExtendPickupAndDisengageTransmission()); // Fire
+        xbox1_X.toggleWhenPressed(new RetractPickupAndExpelBall()); // ExpelBall
+        xbox1_Y.toggleWhenPressed(new ExtendPickupAndLoadBall());   // LoadBall
+        xbox1_A.whenPressed(new FireAndReload()); // Auto Fire and REload
+        xbox1_START.whileHeld(new VisionTest());
         
     }
 }

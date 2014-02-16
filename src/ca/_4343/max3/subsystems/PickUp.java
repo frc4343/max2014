@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import ca._4343.max3.RobotMap;
-import ca._4343.max3.commands.PickupDoNothing;
+import ca._4343.max3.commands.FiringSystem.PickupDoNothing;
 
 /**
  *
@@ -38,6 +38,9 @@ public class PickUp extends Subsystem {
     }
     public void load() {
         pickUpRollers.set(-1);
+    }
+    public void loadSlowly() {
+        pickUpRollers.set(-0.2);
     }
     public void expel() {
         pickUpRollers.set(1);

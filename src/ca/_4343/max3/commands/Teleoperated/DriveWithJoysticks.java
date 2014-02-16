@@ -2,21 +2,19 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- *//*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
  */
-package ca._4343.max3.commands;
+package ca._4343.max3.commands.Teleoperated;
+
+import ca._4343.max3.commands.CommandBase;
 
 /**
  *
- * @author Brian
+ * @author brianho
  */
-public class PickupDoNothing extends CommandBase {
+public class DriveWithJoysticks extends CommandBase {
     
-    public PickupDoNothing() {
-        requires(pickup);
+    public DriveWithJoysticks() {
+        requires(drivetrain);
     }
 
     // Called just before this Command runs the first time
@@ -25,8 +23,7 @@ public class PickupDoNothing extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        pickup.doNothing();
-        
+        drivetrain.arcadeDrive(oi.getX(), oi.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

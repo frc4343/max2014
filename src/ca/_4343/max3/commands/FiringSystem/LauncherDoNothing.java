@@ -3,40 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca._4343.max3.commands;
+package ca._4343.max3.commands.FiringSystem;
+
+import ca._4343.max3.commands.CommandBase;
 
 /**
  *
- * @author Brian
+ * @author brianho
  */
-public class ExpelBall extends CommandBase {
+public class LauncherDoNothing extends CommandBase {
     
-    final double BALL_TIMEOUT = 1.8;
-    
-    public ExpelBall() {
-        requires(pickup);
-        requires(pickupPistons);
+    public LauncherDoNothing() {
+        requires(launcher);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        setTimeout(BALL_TIMEOUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        pickupPistons.retract();
-        pickup.expel();
+        launcher.doNothing();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (this.isTimedOut());
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        //pickupPistons.extend();
     }
 
     // Called when another command which requires one or more of the same

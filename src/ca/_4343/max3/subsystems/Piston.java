@@ -2,7 +2,6 @@ package ca._4343.max3.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import ca._4343.max3.commands.DefaultPistonPositions;
 
 /**
  *

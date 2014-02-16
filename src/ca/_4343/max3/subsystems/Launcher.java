@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import ca._4343.max3.RobotMap;
-import ca._4343.max3.commands.LauncherDoNothing;
+import ca._4343.max3.commands.FiringSystem.LauncherDoNothing;
 
 /**
  *
@@ -61,6 +61,6 @@ public class Launcher extends PIDSubsystem {
         // So that the motor only goes one way
     }
     public boolean isReadyToLoadOrFire() {
-        return limitSwitch.get();
+        return !limitSwitch.get();
     }
 }
