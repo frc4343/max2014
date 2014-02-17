@@ -9,8 +9,7 @@ package ca._4343.max3;
 
 
 import Extras.Camera;
-import ca._4343.max3.commands.Autonomous.Regular.AutonomousDefaultSequence;
-import ca._4343.max3.commands.Autonomous.middle.AutonomousMiddleSequence;
+import ca._4343.max3.commands.Autonomous.AutonomousDefaultSequence;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -83,8 +82,8 @@ public class RobotTemplate extends IterativeRobot {
     
     private void initializeVirtualButtons() {
         pickAutonomousMode = new SendableChooser();
-        pickAutonomousMode.addDefault("Left Autonomous", new AutonomousDefaultSequence(true));
-        pickAutonomousMode.addDefault("Right Autonomous", new AutonomousDefaultSequence(false));
+        pickAutonomousMode.addDefault("Starting Left", new AutonomousDefaultSequence(true)); // By default if it cannot find vision target, robot turns right
+        pickAutonomousMode.addObject("Starting Right", new AutonomousDefaultSequence(false)); 
         SmartDashboard.putData("Select Autonomous Mode", pickAutonomousMode);
     }
     
