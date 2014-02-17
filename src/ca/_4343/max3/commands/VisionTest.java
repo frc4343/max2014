@@ -8,13 +8,12 @@ package ca._4343.max3.commands;
 import Extras.FindTarget;
 
 /**
- *
  * @author CC
  */
 public class VisionTest extends CommandBase {
-    
+
     FindTarget findTarget;
-    
+
     public VisionTest() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -39,7 +38,7 @@ public class VisionTest extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        
+
     }
 
     // Called when another command which requires one or more of the same

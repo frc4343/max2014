@@ -7,11 +7,9 @@ package ca._4343.max3.commands.Autonomous;
 
 import Extras.FindTarget;
 import Extras.FindTarget.TargetReport;
-import ca._4343.max3.GlobalConstants;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author CC
  */
 public class AutonomousCheckTargetsAndDirection extends CommandBase {

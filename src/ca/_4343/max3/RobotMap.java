@@ -16,18 +16,18 @@ public class RobotMap {
             pwm_launcherMotorPair = 10,
             pwm_pickupMotor = 7,
 
-            // COMPRESSOR
-            relay_compressor = 1,
+    // COMPRESSOR
+    relay_compressor = 1,
             gpio_compressor_pressure_switch = 1,
-            // DIGITAL IO / GENERAL PURPOSE INPUT OUTPUT (GPIO)
-            gpio_launcher_fullyLoaded_LimitSwitch = 2,
+    // DIGITAL IO / GENERAL PURPOSE INPUT OUTPUT (GPIO)
+    gpio_launcher_fullyLoaded_LimitSwitch = 2,
             gpio_ball_inBasket_Sensor_LimitSwitch = 3,
             gpio_transmission_extended = 4,
             gpio_transmission_retracted = 5,
-            // CRIO - ANALOG MODULE
-            crio_analogModule_GyroSensor = 3;
-    
+    // CRIO - ANALOG MODULE
+    crio_analogModule_GyroSensor = 3;
+
     public static DriverStation ds;
-            
+
 
 }

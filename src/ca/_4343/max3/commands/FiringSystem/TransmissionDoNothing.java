@@ -8,11 +8,10 @@ package ca._4343.max3.commands.FiringSystem;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author Administrator
  */
 public class TransmissionDoNothing extends CommandBase {
-    
+
     public TransmissionDoNothing() {
         requires(transmission);
     }

@@ -10,11 +10,11 @@ package ca._4343.max3;
 
 import Extras.Camera;
 import ca._4343.max3.commands.Autonomous.AutonomousDefaultSequence;
+import ca._4343.max3.commands.CommandBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import ca._4343.max3.commands.CommandBase;
-import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotTemplate extends IterativeRobot {
     SendableChooser pickAutonomousMode;
     CommandGroup autoCommand;
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -39,13 +40,13 @@ public class RobotTemplate extends IterativeRobot {
         CommandBase.init();
         Camera.init();
     }
-   
+
 
     public void autonomousInit() {
         autoCommand = (CommandGroup) pickAutonomousMode.getSelected();
         autoCommand.start();
         System.out.println("Starting Autonomous");
-        
+
     }
 
     /**
@@ -57,8 +58,8 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void teleopInit() {
-	// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
+        // This makes sure that the autonomous stops running when
+        // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
         //autonomousCommand.cancel();
@@ -72,23 +73,23 @@ public class RobotTemplate extends IterativeRobot {
         Scheduler.getInstance().run();
         //printConsoleOutput();
     }
-    
+
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
         LiveWindow.run();
     }
-    
+
     private void initializeVirtualButtons() {
         pickAutonomousMode = new SendableChooser();
-        pickAutonomousMode.addDefault("1 BALL : Starting Left", new AutonomousDefaultSequence(true , false)); // Default 1 ball, By default if it cannot find vision target, robot turns right 
-        pickAutonomousMode.addObject("1 BALL : Starting Right", new AutonomousDefaultSequence(false, false)); 
-        pickAutonomousMode.addObject("2 BALLS : Starting Left", new AutonomousDefaultSequence(true , true)); // By default if it cannot find vision target, robot turns right
-        pickAutonomousMode.addObject("2 BALLS : Starting Right", new AutonomousDefaultSequence(false, true)); 
+        pickAutonomousMode.addDefault("1 BALL : Starting Left", new AutonomousDefaultSequence(true, false)); // Default 1 ball, By default if it cannot find vision target, robot turns right
+        pickAutonomousMode.addObject("1 BALL : Starting Right", new AutonomousDefaultSequence(false, false));
+        pickAutonomousMode.addObject("2 BALLS : Starting Left", new AutonomousDefaultSequence(true, true)); // By default if it cannot find vision target, robot turns right
+        pickAutonomousMode.addObject("2 BALLS : Starting Right", new AutonomousDefaultSequence(false, true));
         SmartDashboard.putData("Select Autonomous Mode", pickAutonomousMode);
     }
-    
+
     /*private void printConsoleOutput() {
         // Clears driverStation text.
         logger.clearWindow();

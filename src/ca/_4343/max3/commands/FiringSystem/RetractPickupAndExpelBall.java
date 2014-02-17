@@ -9,11 +9,10 @@ import ca._4343.max3.GlobalConstants;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author Brian
  */
 public class RetractPickupAndExpelBall extends CommandBase {
-    
+
     public RetractPickupAndExpelBall() {
         requires(pickup);
         requires(pickupPistons);

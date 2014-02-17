@@ -3,11 +3,10 @@ package ca._4343.max3.commands.FiringSystem;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author brianho
  */
 public class EngageTransmissionAndPullDownLauncher extends CommandBase {
-    
+
     public EngageTransmissionAndPullDownLauncher() {
         requires(launcher);
         requires(transmission);
@@ -20,12 +19,12 @@ public class EngageTransmissionAndPullDownLauncher extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         launcher.set(0.50);
-        if(!transmission.retracted()) {
+        if (!transmission.retracted()) {
             transmission.retract();
         } else {
             transmission.stop();
             launcher.set(1); // Full Pulldown
-        } 
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

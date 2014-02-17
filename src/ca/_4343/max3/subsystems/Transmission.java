@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
  * @author Administrator
  */
 public class Transmission extends Subsystem {
@@ -33,7 +32,7 @@ public class Transmission extends Subsystem {
     public void extend() {
         motor.set(1);
     }
-    
+
     public boolean extended() {
         return extendedlimitSwitch.get();
     }
@@ -43,7 +42,7 @@ public class Transmission extends Subsystem {
         superTimer.start();
         motor.set(-.15);
     }
-    
+
     public boolean retracted() {
         return retractedlimitSwitch.get() || superTimer.get() > 0.314;
     }

@@ -5,15 +5,14 @@
  */
 package ca._4343.max3.subsystems;
 
+import ca._4343.max3.RobotMap;
+import ca._4343.max3.commands.FiringSystem.LauncherDoNothing;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import ca._4343.max3.RobotMap;
-import ca._4343.max3.commands.FiringSystem.LauncherDoNothing;
 
 /**
- *
  * @author Brian
  */
 public class Launcher extends PIDSubsystem {
@@ -24,6 +23,7 @@ public class Launcher extends PIDSubsystem {
 
     SpeedController launcherMotor = new Victor(RobotMap.pwm_launcherMotorPair);
     DigitalInput limitSwitch = new DigitalInput(RobotMap.gpio_launcher_fullyLoaded_LimitSwitch);
+
     // Initialize your subsystem here
     public Launcher() {
         super("Launcher", Kp, Ki, Kd);
@@ -33,33 +33,37 @@ public class Launcher extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     }
-    
+
     public void initDefaultCommand() {
-       setDefaultCommand(new LauncherDoNothing());
+        setDefaultCommand(new LauncherDoNothing());
     }
-    
+
     protected double returnPIDInput() {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
         return 0.0;
     }
-    
+
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     }
+
     public void doNothing() {
         launcherMotor.set(0);
     }
+
     public void set(double speed) {
-        launcherMotor.set(-Math.abs(speed)); 
+        launcherMotor.set(-Math.abs(speed));
         // So that the motor only goes one way
     }
+
     public void pulseMotor() {
         launcherMotor.set(-1);  // Set to negative for testing
         // So that the motor only goes one way
     }
+
     public boolean isReadyToLoadOrFire() {
         return !limitSwitch.get();
     }

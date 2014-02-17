@@ -1,6 +1,5 @@
 package ca._4343.max3.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import ca._4343.max3.OI;
 import ca._4343.max3.subsystems.DriveTrain;
 import ca._4343.max3.subsystems.Launcher;
@@ -8,11 +7,13 @@ import ca._4343.max3.subsystems.PickUp;
 import ca._4343.max3.subsystems.Piston;
 import ca._4343.max3.subsystems.Pneumatics;
 import ca._4343.max3.subsystems.Transmission;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
  * CommandBase stores creates and stores each control system. To access a
  * subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
+ *
  * @author Author
  */
 public abstract class CommandBase extends Command {
@@ -23,7 +24,7 @@ public abstract class CommandBase extends Command {
     public static DriveTrain drivetrain = new DriveTrain();
     public static Launcher launcher = new Launcher();
     public static Pneumatics pneumatics = new Pneumatics();
-    public static Piston pickupPistons = new Piston((byte) 3,(byte) 4, true);
+    public static Piston pickupPistons = new Piston((byte) 3, (byte) 4, true);
     public static Transmission transmission = new Transmission();
 
     public static void init() {

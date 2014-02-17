@@ -5,11 +5,10 @@ import ca._4343.max3.RobotMap;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author Brian
  */
 public class ExtendPickupAndLoadBall extends CommandBase {
-    
+
     public ExtendPickupAndLoadBall() {
         requires(pickup);
         requires(pickupPistons);
@@ -24,14 +23,14 @@ public class ExtendPickupAndLoadBall extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         pickupPistons.extend();
-        if(launcher.isReadyToLoadOrFire() && !pickup.isLoaded()) {
+        if (launcher.isReadyToLoadOrFire() && !pickup.isLoaded()) {
             pickup.load();
         }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(RobotMap.ds.isAutonomous()) {
+        if (RobotMap.ds.isAutonomous()) {
             return isTimedOut();
         } else {
             return pickup.isLoaded();
@@ -41,7 +40,7 @@ public class ExtendPickupAndLoadBall extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         pickupPistons.retract();
-        
+
     }
 
     // Called when another command which requires one or more of the same

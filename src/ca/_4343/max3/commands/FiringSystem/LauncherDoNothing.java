@@ -8,11 +8,10 @@ package ca._4343.max3.commands.FiringSystem;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author brianho
  */
 public class LauncherDoNothing extends CommandBase {
-    
+
     public LauncherDoNothing() {
         requires(launcher);
     }

@@ -12,11 +12,10 @@ package ca._4343.max3.commands.FiringSystem;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author Brian
  */
 public class PickupDoNothing extends CommandBase {
-    
+
     public PickupDoNothing() {
         requires(pickup);
     }
@@ -28,7 +27,7 @@ public class PickupDoNothing extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         pickup.doNothing();
-        
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

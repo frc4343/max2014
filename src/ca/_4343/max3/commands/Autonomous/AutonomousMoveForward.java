@@ -8,13 +8,12 @@ package ca._4343.max3.commands.Autonomous;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author CC
  */
 public class AutonomousMoveForward extends CommandBase {
-    
+
     public AutonomousMoveForward() {
-       requires(drivetrain);
+        requires(drivetrain);
     }
 
     // Called just before this Command runs the first time

@@ -4,7 +4,6 @@ import ca._4343.max3.GlobalConstants;
 import ca._4343.max3.commands.CommandBase;
 
 /**
- *
  * @author Administrator
  */
 public class ExtendPickupAndDisengageTransmission extends CommandBase {
@@ -19,7 +18,7 @@ public class ExtendPickupAndDisengageTransmission extends CommandBase {
         pickup.loadSlowly();
         pickupPistons.extend();
         this.setTimeout(GlobalConstants.EXTEND_PICKUP_BEFORE_FIRING_DELAY);
-        
+
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,10 +33,10 @@ public class ExtendPickupAndDisengageTransmission extends CommandBase {
         return transmission.extended();
     }
 
-    
+
     // Called once after isFinished returns true
     protected void end() {
-        
+
     }
 
     // Called when another command which requires one or more of the same
