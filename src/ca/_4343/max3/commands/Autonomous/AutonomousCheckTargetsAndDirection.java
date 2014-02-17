@@ -32,22 +32,22 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
     protected void initialize() {
         findtarget = new FindTarget();
         finished = false;
-        setTimeout(GlobalConstants.DELAY_BEFORE_TURNING); // if no hot goal found at placement
+        //setTimeout(GlobalConstants.DELAY_BEFORE_TURNING); // if no hot goal found at placement
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         //drivetrain.disableSafety();
         targetReport = findtarget.giveMeATarget();
-        if (targetReport.Hot) {
+        if (targetReport.Hot && stage == 0) {
             //drivetrain.enableSafety();
             if (targetReport.leftScore > targetReport.rightScore) { //We are on left side
-                drivetrain.tankDrive(1, 0);
+                left = true;
             } else {    //We are on right side
-                drivetrain.tankDrive(0, 1);
+                left = false;
             }
             finished = true;
-        } else if (isTimedOut() || stage == 1) { // If no visiton target is found within defined time
+        } else if (!targetReport.Hot || stage == 1) {
             if (left) {
                 drivetrain.tankDrive(0, 1); //Turn Right
                 if (targetReport.Hot) { // Check for target
@@ -59,6 +59,8 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
                     }
                 }
             }
+        } else if (stage == 3) {
+            finished = targetReport.Hot;
         } else {
             finished = false;
         }
