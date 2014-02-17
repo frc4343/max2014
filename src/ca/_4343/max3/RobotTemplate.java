@@ -8,7 +8,7 @@
 package ca._4343.max3;
 
 import Extras.Camera;
-import ca._4343.max3.commands.Autonomous.AutonomousDefaultSequence;
+import ca._4343.max3.commands.Autonomous.AutonomousSequence;
 import ca._4343.max3.commands.CommandBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -79,10 +79,10 @@ public class RobotTemplate extends IterativeRobot {
 
     private void initializeVirtualButtons() {
         pickAutonomousMode = new SendableChooser();
-        pickAutonomousMode.addDefault("1 BALL : Starting Left", new AutonomousDefaultSequence(true, false)); // Default 1 ball, By default if it cannot find vision target, robot turns right
-        pickAutonomousMode.addObject("1 BALL : Starting Right", new AutonomousDefaultSequence(false, false));
-        pickAutonomousMode.addObject("2 BALLS : Starting Left", new AutonomousDefaultSequence(true, true)); // By default if it cannot find vision target, robot turns right
-        pickAutonomousMode.addObject("2 BALLS : Starting Right", new AutonomousDefaultSequence(false, true));
+        pickAutonomousMode.addDefault("1 BALL : Starting Left", new AutonomousSequence(true, false)); // Default 1 ball, By default if it cannot find vision target, robot turns right
+        pickAutonomousMode.addObject("1 BALL : Starting Right", new AutonomousSequence(false, false));
+        pickAutonomousMode.addObject("2 BALLS : Starting Left", new AutonomousSequence(true, true)); // By default if it cannot find vision target, robot turns right
+        pickAutonomousMode.addObject("2 BALLS : Starting Right", new AutonomousSequence(false, true));
         SmartDashboard.putData("Select Autonomous Mode", pickAutonomousMode);
     }
 

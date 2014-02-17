@@ -27,12 +27,7 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
         //drivetrain.disableSafety();
         targetReport = findtarget.giveMeATarget();
         if (targetReport.Hot && stage == 0) {
-            //drivetrain.enableSafety();
-            if (targetReport.leftScore > targetReport.rightScore) { // We are on left side.
-                left = true;
-            } else { // We are on right side.
-                left = false;
-            }
+            left = targetReport.leftScore > targetReport.rightScore;
             finished = true;
         } else if (!targetReport.Hot || stage == 1) {
             if (left) {
