@@ -20,10 +20,11 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
     TargetReport targetReport;
     private boolean finished;
     private boolean left;
-    private boolean right = !left;
+    private byte stage = 0;
 
-    public AutonomousCheckTargetsAndDirection(boolean left) {
+    public AutonomousCheckTargetsAndDirection(boolean left, byte stage) {
         this.left = left;
+        this.stage = stage;
         requires(drivetrain);
     }
 
@@ -46,7 +47,7 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
                 drivetrain.tankDrive(0, 1);
             }
             finished = true;
-        } else if (isTimedOut()) { // If no visiton target is found within defined time
+        } else if (isTimedOut() || stage == 1) { // If no visiton target is found within defined time
             if (left) {
                 drivetrain.tankDrive(0, 1); //Turn Right
                 if (targetReport.Hot) { // Check for target
