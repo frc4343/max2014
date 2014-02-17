@@ -28,6 +28,4 @@ public class RobotMap {
     crio_analogModule_GyroSensor = 3;
 
     public static DriverStation ds;
-
-
 }

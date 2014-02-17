@@ -7,7 +7,6 @@
 
 package ca._4343.max3;
 
-
 import Extras.Camera;
 import ca._4343.max3.commands.Autonomous.AutonomousDefaultSequence;
 import ca._4343.max3.commands.CommandBase;
@@ -34,13 +33,10 @@ public class RobotTemplate extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the command used for the autonomous period
-        //autonomousCommand = new ExampleCommand();
         initializeVirtualButtons();
         CommandBase.init();
         Camera.init();
     }
-
 
     public void autonomousInit() {
         autoCommand = (CommandGroup) pickAutonomousMode.getSelected();
@@ -50,10 +46,10 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     /**
-     * This function is called periodically during autonomous
+     * This function is called periodically during autonomous.
      */
     public void autonomousPeriodic() {
-        RobotMap.ds = this.m_ds; // is this a cause for the errors?
+        RobotMap.ds = this.m_ds; // Is this a cause for the errors?
         Scheduler.getInstance().run();
     }
 
@@ -66,16 +62,16 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     /**
-     * This function is called periodically during operator control
+     * This function is called periodically during operator control.
      */
     public void teleopPeriodic() {
-        RobotMap.ds = this.m_ds; // is this a cause for the errors?
+        RobotMap.ds = this.m_ds; // Is this a cause for the errors?
         Scheduler.getInstance().run();
         //printConsoleOutput();
     }
 
     /**
-     * This function is called periodically during test mode
+     * This function is called periodically during test mode.
      */
     public void testPeriodic() {
         LiveWindow.run();

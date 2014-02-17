@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- 
-package ca._4343.max3.subsystems;
+/*package ca._4343.max3.subsystems;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-
-/**
- *
- * @author Administrator
- 
 public class GyroSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

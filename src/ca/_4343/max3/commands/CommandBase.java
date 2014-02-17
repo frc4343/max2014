@@ -9,17 +9,9 @@ import ca._4343.max3.subsystems.Pneumatics;
 import ca._4343.max3.subsystems.Transmission;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * The base for all commands. All atomic commands should subclass CommandBase.
- * CommandBase stores creates and stores each control system. To access a
- * subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
- *
- * @author Author
- */
 public abstract class CommandBase extends Command {
-
     public static OI oi;
-    // Create a single static instance of all of your subsystems
+    // Static instances of all subsystems.
     public static PickUp pickup = new PickUp();
     public static DriveTrain drivetrain = new DriveTrain();
     public static Launcher launcher = new Launcher();

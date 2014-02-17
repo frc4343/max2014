@@ -3,9 +3,6 @@ package ca._4343.max3.subsystems;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * @author Nikita Pekin
- */
 public class Piston extends Subsystem {
     // Initialize an array of two solenoids to handle the solenoids controlling the piston.
     Solenoid[] solenoids = new Solenoid[2];
@@ -31,7 +28,5 @@ public class Piston extends Subsystem {
         solenoids[1].set(!isExtended);
     }
 
-    public void initDefaultCommand() {
-        //setDefaultCommand(new DefaultPistonPositions());
-    }
+    public void initDefaultCommand() { }
 }
