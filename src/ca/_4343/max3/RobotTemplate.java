@@ -79,8 +79,7 @@ public class RobotTemplate extends IterativeRobot {
 
     private void initializeVirtualButtons() {
         pickAutonomousMode = new SendableChooser();
-        pickAutonomousMode.addDefault("1 BALL : Starting Left", new AutonomousSequence(true, false)); // Default 1 ball, By default if it cannot find vision target, robot turns right
-        pickAutonomousMode.addObject("1 BALL : Starting Right", new AutonomousSequence(false, false));
+        pickAutonomousMode.addDefault("1 BALL : Left or Right", new AutonomousSequence(true /* Doesn't matter if <- is true or false */, false)); // Default 1 ball, waits for vision target
         pickAutonomousMode.addObject("2 BALLS : Starting Left", new AutonomousSequence(true, true)); // By default if it cannot find vision target, robot turns right
         pickAutonomousMode.addObject("2 BALLS : Starting Right", new AutonomousSequence(false, true));
         SmartDashboard.putData("Select Autonomous Mode", pickAutonomousMode);
