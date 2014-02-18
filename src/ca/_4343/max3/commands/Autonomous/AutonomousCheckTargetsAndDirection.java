@@ -8,7 +8,7 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
     FindTarget findtarget;
     TargetReport targetReport;
     private boolean finished;
-    private boolean left;
+    private static boolean left;
     private byte stage = 0;
 
     public AutonomousCheckTargetsAndDirection(boolean left, byte stage) {
@@ -31,14 +31,14 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
             finished = true;
         } else if (!targetReport.Hot || stage == 1) {
             if (left) {
-                drivetrain.tankDrive(0, 1); // Turn Right.
+                drivetrain.tankDrive(1, 0); //Turn right.
                 if (targetReport.Hot) { // Check for target.
                     finished = true;
-                } else { // right
-                    drivetrain.tankDrive(1, 0); // Turn Right.
-                    if (targetReport.Hot) { // Check for target.
-                        finished = true;
-                    }
+                }
+            } else { // right
+                drivetrain.tankDrive(0, 1); // Turn left.
+                if (targetReport.Hot) { // Check for target.
+                    finished = true;
                 }
             }
         } else if (stage == 3) {
