@@ -10,4 +10,5 @@ public class GlobalConstants {
     public static final double SINGLE_BALL_NO_VISION_TIMEOUT = 6.5;
     public static final double TURN_FOR = 0.4;
     public static final double AUTONOMOUS_MOTOR_TURN_SPEED = 0.65;
+    public static boolean detectedOnFirst = false;
 }

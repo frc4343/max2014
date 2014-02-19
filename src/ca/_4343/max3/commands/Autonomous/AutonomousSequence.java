@@ -1,5 +1,6 @@
 package ca._4343.max3.commands.Autonomous;
 
+import ca._4343.max3.GlobalConstants;
 import ca._4343.max3.commands.FiringSystem.ExtendPickupAndLoadBall;
 import ca._4343.max3.commands.Teleoperated.FireAndReload;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -12,8 +13,9 @@ public class AutonomousSequence extends CommandGroup {
             addSequential(new FireAndReload());
             addSequential(new ExtendPickupAndLoadBall()); // b/c already extended, this just loads and .. this is test -> close to hold and steady ball in launcher???
             addSequential(new AutonomousCheckTargetsAndDirection(!left, (byte) 1)); // Stage 1 looks at opposite side :D
+            //GlobalConstants.detectedOnFirst = false;
             addParallel(new FireAndReload());
-            addSequential(new AccelerateSlowly(0.3));
+            addParallel(new AccelerateSlowly(0.2));
         } else if (IDONTGIVEASHITABOUTHOTGOAL) {
             addSequential(new ExtendPickupAndLoadBall());
             //addSequential(new AutonomousCheckTargetsAndDirection(left, (byte) 0)); //Stage 0

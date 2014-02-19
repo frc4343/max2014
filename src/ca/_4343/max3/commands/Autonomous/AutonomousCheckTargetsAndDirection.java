@@ -12,7 +12,6 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
     private boolean left;
     private byte stage = 0;
     private boolean setTimer1 = false;
-    private static boolean detectedOnFirst = false;
 
     public AutonomousCheckTargetsAndDirection(boolean left, byte stage) {
         this.left = left;
@@ -23,7 +22,6 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
     protected void initialize() {
         findtarget = new FindTarget();
         finished = false;
-        detectedOnFirst = false;
         if(this.stage == 3)
             setTimeout(GlobalConstants.SINGLE_BALL_NO_VISION_TIMEOUT);
         //setTimeout(GlobalConstants.DELAY_BEFORE_TURNING); // If no hot goal found at placement.
@@ -31,17 +29,20 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
 
     protected void execute() {
         targetReport = findtarget.giveMeATarget();
-        if ( stage == 0 && targetReport.Hot && targetReport != null) {
+        if (stage == 0 && targetReport.Hot && targetReport != null) {
+                
                     left = targetReport.leftScore > targetReport.rightScore;
-                    detectedOnFirst = true;
+                    GlobalConstants.detectedOnFirst = true;
                     finished = true;
+                    System.out.println("Detected on First: "+GlobalConstants.detectedOnFirst);
         } else if (stage == 3) {
             if(!this.isTimedOut())
                 finished = targetReport.Hot;
             else
                 finished = true;
         } else if (!targetReport.Hot || stage == 1) {
-            if(detectedOnFirst == false) {
+            if(GlobalConstants.detectedOnFirst == false) {
+                System.out.println("Detected on first is equal to false");
                 finished = true;
             } else {
             if(setTimer1 == false) {
@@ -84,6 +85,7 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
         //findtarget = null; // Make it ready for garbage collector (was originally in check directions, dont know if needed, tedi had not used for start button in teleop of controller.
         drivetrain.tankDrive(0, 0);
         setTimer1 = false;
+        finished = false;
         System.out.println("FINISHED");
     }
 

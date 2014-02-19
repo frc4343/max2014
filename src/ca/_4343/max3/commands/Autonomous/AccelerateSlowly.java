@@ -30,7 +30,7 @@ public class AccelerateSlowly extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(initialSpeed <= 1) {
-            initialSpeed += 0.001;
+            initialSpeed += 0.05;
         }
         if(!this.isTimedOut())
             drivetrain.arcadeDrive(-initialSpeed, 0);
