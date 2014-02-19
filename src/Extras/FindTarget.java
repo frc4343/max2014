@@ -143,10 +143,18 @@ public class FindTarget {
                     if (target.Hot) {
                         System.out.println("Target is on the " + (target.leftScore > target.rightScore ? "left" : "right") + " side");
                         System.out.println("----------TARGET----------");
+                        System.out.println("Distance: " + distance);
+                        filteredImage.free();
+                        thresholdImage.free();
+                        image.free();
                         return target;
                     } else {
                         System.out.println("----------NO TARGET----------");
-                        return null;
+                        filteredImage.free();
+                        thresholdImage.free();
+                        image.free();
+                        return target;
+                        
                     }
                 }
             }
@@ -156,16 +164,14 @@ public class FindTarget {
              * of C data structures. Not calling free() will cause the memory to accumulate over
              * each pass of this loop.
              */
-            filteredImage.free();
-            thresholdImage.free();
-            image.free();
+            
 
         } catch (AxisCameraException ex) { // Required if camera.getImage() is called.
             ex.printStackTrace();
         } catch (NIVisionException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return target;
     }
 
     /**

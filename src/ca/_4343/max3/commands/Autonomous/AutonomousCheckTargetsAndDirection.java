@@ -2,14 +2,17 @@ package ca._4343.max3.commands.Autonomous;
 
 import Extras.FindTarget;
 import Extras.FindTarget.TargetReport;
+import ca._4343.max3.GlobalConstants;
 import ca._4343.max3.commands.CommandBase;
 
 public class AutonomousCheckTargetsAndDirection extends CommandBase {
     FindTarget findtarget;
     TargetReport targetReport;
     private boolean finished;
-    private static boolean left;
+    private boolean left;
     private byte stage = 0;
+    private boolean setTimer1 = false;
+    private static boolean detectedOnFirst = false;
 
     public AutonomousCheckTargetsAndDirection(boolean left, byte stage) {
         this.left = left;
@@ -20,29 +23,54 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
     protected void initialize() {
         findtarget = new FindTarget();
         finished = false;
+        detectedOnFirst = false;
+        if(this.stage == 3)
+            setTimeout(GlobalConstants.SINGLE_BALL_NO_VISION_TIMEOUT);
         //setTimeout(GlobalConstants.DELAY_BEFORE_TURNING); // If no hot goal found at placement.
     }
 
     protected void execute() {
-        //drivetrain.disableSafety();
         targetReport = findtarget.giveMeATarget();
-        if (targetReport.Hot && stage == 0) {
-            left = targetReport.leftScore > targetReport.rightScore;
-            finished = true;
-        } else if (!targetReport.Hot || stage == 1) {
-            if (left) {
-                drivetrain.tankDrive(1, 0); //Turn right.
-                if (targetReport.Hot) { // Check for target.
+        if ( stage == 0 && targetReport.Hot && targetReport != null) {
+                    left = targetReport.leftScore > targetReport.rightScore;
+                    detectedOnFirst = true;
                     finished = true;
-                }
-            } else { // right
-                drivetrain.tankDrive(0, 1); // Turn left.
-                if (targetReport.Hot) { // Check for target.
-                    finished = true;
-                }
-            }
         } else if (stage == 3) {
-            finished = targetReport.Hot;
+            if(!this.isTimedOut())
+                finished = targetReport.Hot;
+            else
+                finished = true;
+        } else if (!targetReport.Hot || stage == 1) {
+            if(detectedOnFirst == false) {
+                finished = true;
+            } else {
+            if(setTimer1 == false) {
+                this.setTimeout(GlobalConstants.TURN_FOR);
+                setTimer1 = false;
+                System.out.println("----------------------Set Timer----------------------");                        
+            }
+            if (left) {
+                if(!this.isTimedOut())
+                    drivetrain.tankDrive(-GlobalConstants.AUTONOMOUS_MOTOR_TURN_SPEED, GlobalConstants.AUTONOMOUS_MOTOR_TURN_SPEED); //Turn right.
+                else {
+                    finished = true;
+                    System.out.println("----------------------Timed out 1----------------------");
+                }
+                /*if (targetReport.Hot) { // Check for target.
+                    finished = true;
+                }*/
+            } else { // right
+                if(!this.isTimedOut()) 
+                    drivetrain.tankDrive(GlobalConstants.AUTONOMOUS_MOTOR_TURN_SPEED, -GlobalConstants.AUTONOMOUS_MOTOR_TURN_SPEED); // Turn left.
+                else {
+                    finished = true;
+                    System.out.println("----------------------Timed out 2----------------------");
+                }
+                /*if (targetReport.Hot) { // Check for target.
+                    finished = true;
+                }*/
+            }
+        }
         } else {
             finished = false;
         }
@@ -55,6 +83,7 @@ public class AutonomousCheckTargetsAndDirection extends CommandBase {
     protected void end() {
         //findtarget = null; // Make it ready for garbage collector (was originally in check directions, dont know if needed, tedi had not used for start button in teleop of controller.
         drivetrain.tankDrive(0, 0);
+        setTimer1 = false;
         System.out.println("FINISHED");
     }
 

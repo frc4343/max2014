@@ -8,7 +8,7 @@ public class AutonomousMoveForward extends CommandBase {
     }
 
     protected void initialize() {
-        this.setTimeout(0.7);
+        this.setTimeout(1);
     }
 
     protected void execute() {

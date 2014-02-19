@@ -12,7 +12,7 @@ public class ExtendPickupAndLoadBall extends CommandBase {
     }
 
     protected void initialize() {
-        this.setTimeout(GlobalConstants.PICKUP_BALL_DELAY);
+        //this.setTimeout(GlobalConstants.PICKUP_BALL_DELAY);
     }
 
     protected void execute() {
@@ -23,14 +23,16 @@ public class ExtendPickupAndLoadBall extends CommandBase {
     }
 
     protected boolean isFinished() {
-        if (RobotMap.ds.isAutonomous()) {
-            return isTimedOut();
-        } else {
+        //if (RobotMap.ds.isAutonomous()) {
+            //return isTimedOut();
+       // } else {
             return pickup.isLoaded();
-        }
+        //}
     }
 
     protected void end() {
+        if(RobotMap.ds.isAutonomous())
+            pickup.doNothing();
         pickupPistons.retract();
     }
 

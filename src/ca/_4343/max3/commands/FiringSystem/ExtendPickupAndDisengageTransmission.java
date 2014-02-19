@@ -1,6 +1,7 @@
 package ca._4343.max3.commands.FiringSystem;
 
 import ca._4343.max3.GlobalConstants;
+import ca._4343.max3.RobotMap;
 import ca._4343.max3.commands.CommandBase;
 
 public class ExtendPickupAndDisengageTransmission extends CommandBase {
@@ -13,7 +14,12 @@ public class ExtendPickupAndDisengageTransmission extends CommandBase {
     protected void initialize() {
         pickup.loadSlowly();
         pickupPistons.extend();
-        this.setTimeout(GlobalConstants.EXTEND_PICKUP_BEFORE_FIRING_DELAY);
+        if(RobotMap.ds.isAutonomous()) {
+            this.setTimeout(0.9);
+        } else {
+            this.setTimeout(GlobalConstants.EXTEND_PICKUP_BEFORE_FIRING_DELAY);
+        }
+        
     }
 
     protected void execute() {

@@ -27,6 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotTemplate extends IterativeRobot {
     SendableChooser pickAutonomousMode;
     CommandGroup autoCommand;
+    boolean ranOnce = false;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -65,6 +66,11 @@ public class RobotTemplate extends IterativeRobot {
      * This function is called periodically during operator control.
      */
     public void teleopPeriodic() {
+        if(!ranOnce && autoCommand != null) {
+            
+            autoCommand.cancel();
+            ranOnce = true;
+        }
         RobotMap.ds = this.m_ds; // Is this a cause for the errors?
         Scheduler.getInstance().run();
         //printConsoleOutput();
@@ -79,9 +85,10 @@ public class RobotTemplate extends IterativeRobot {
 
     private void initializeVirtualButtons() {
         pickAutonomousMode = new SendableChooser();
-        pickAutonomousMode.addDefault("1 BALL : Left or Right", new AutonomousSequence(true /* Doesn't matter if <- is true or false */, false)); // Default 1 ball, waits for vision target
-        pickAutonomousMode.addObject("2 BALLS : Starting Left", new AutonomousSequence(true, true)); // By default if it cannot find vision target, robot turns right
-        pickAutonomousMode.addObject("2 BALLS : Starting Right", new AutonomousSequence(false, true));
+        pickAutonomousMode.addDefault("1 BALL : Left or Right", new AutonomousSequence(true /* Doesn't matter if <- is true or false */, false, false)); // Default 1 ball, waits for vision target
+        pickAutonomousMode.addObject("2 BALLS : Starting Left", new AutonomousSequence(true, true , false)); // By default if it cannot find vision target, robot turns right
+        pickAutonomousMode.addObject("2 BALLS : Starting Right", new AutonomousSequence(false, true, false));
+        pickAutonomousMode.addObject("2 BALLS : Disregard Hot Goal", new AutonomousSequence(false, false, true));
         SmartDashboard.putData("Select Autonomous Mode", pickAutonomousMode);
     }
 
