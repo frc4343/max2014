@@ -11,9 +11,12 @@ public class EngageTransmissionAndPullDownLauncher extends CommandBase {
     protected void initialize() { }
 
     protected void execute() {
-        launcher.set(0.50);
+        launcher.set(0.40);
+        System.out.println("Transmission State: "+transmission.retracted());
         if (!transmission.retracted()) {
-            transmission.retract();
+            if(!transmission.retracted()) {
+                transmission.retract();
+            }
         } else {
             transmission.stop();
             launcher.set(1); // Full pull-down.
@@ -25,7 +28,7 @@ public class EngageTransmissionAndPullDownLauncher extends CommandBase {
     }
 
     protected void end() {
-        launcher.set(0); // Just in-case. May not be necessary, but don't want wrecked robot.. could be a potential source of error.
+        //launcher.set(0); // Just in-case. May not be necessary, but don't want wrecked robot.. could be a potential source of error.
     }
 
     protected void interrupted() { }

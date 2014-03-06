@@ -24,6 +24,7 @@ public class AutonomousSequence extends CommandGroup {
             //addSequential(new AutonomousCheckTargetsAndDirection(!left, (byte) 1)); // Stage 1 looks at opposite side :D
             addSequential(new FireAndReload());
             addSequential(new AutonomousMoveForward());
+            //addSequential(new AutonomousMoveForward());
         } else {
             addSequential(new ExtendArm());
             addSequential(new AutonomousCheckTargetsAndDirection(left, (byte) 3)); //Stage 3 , 1 Ball auto, waits for hot goal before firing.

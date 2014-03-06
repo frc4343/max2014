@@ -27,17 +27,17 @@ public class Transmission extends Subsystem {
     }
 
     public void retract() {
-        superTimer.reset();
-        superTimer.start();
-        motor.set(-.15);
+        /*superTimer.reset();
+        superTimer.start();*/
+        motor.set(-.275);
     }
 
     public boolean retracted() {
-        return retractedlimitSwitch.get() || superTimer.get() > 0.314;
+        return retractedlimitSwitch.get(); /*|| superTimer.get() > 0.314;*/
     }
 
     public void stop() {
         motor.set(0);
-        superTimer.stop();
+        //superTimer.stop();
     }
 }

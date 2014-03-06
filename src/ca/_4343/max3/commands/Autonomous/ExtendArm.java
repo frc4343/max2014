@@ -16,21 +16,24 @@ public class ExtendArm extends CommandBase {
     public ExtendArm() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(pickup);
         requires(pickupPistons);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        setTimeout(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        pickup.loadSlowly();
         pickupPistons.extend();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

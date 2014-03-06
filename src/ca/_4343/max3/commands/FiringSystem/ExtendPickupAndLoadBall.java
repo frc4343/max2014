@@ -17,8 +17,12 @@ public class ExtendPickupAndLoadBall extends CommandBase {
 
     protected void execute() {
         pickupPistons.extend();
-        if (launcher.isReadyToLoadOrFire() && !pickup.isLoaded()) {
-            pickup.load();
+        System.out.println("Launcher is ready: "+launcher.isReadyToLoadOrFire());
+        System.out.println("Pickup is loaded: " + pickup.isLoaded());
+        if(!pickup.isLoaded()) {
+             if (launcher.isReadyToLoadOrFire() && !pickup.isLoaded()) {
+                pickup.load();
+            }
         }
     }
 
