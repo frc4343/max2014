@@ -23,7 +23,18 @@ public class OI {
         xbox1_B.whenPressed(new RetractArm());
         xbox1_START.whileHeld(new VisionTest());*/
     }
-    
+    /**
+     * @return X axis on controller 
+     */
+    public double getX() {
+        return xbox1.getRawAxis(3);
+    }
+    /**
+     * @return Y axis on controller with joystick dead zone compensation
+     */
+    public double getY() {
+        return Math.abs(xbox1.getRawAxis(1)) >= 0.2 ? xbox1.getRawAxis(1) : 0;
+    }
     //Joystick's
     Joystick xbox1 = new Joystick(1);
     Joystick xbox2 = new Joystick(2);

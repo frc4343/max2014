@@ -1,7 +1,5 @@
 package ca._4343;
 
-import edu.wpi.first.wpilibj.DriverStation;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -11,19 +9,24 @@ import edu.wpi.first.wpilibj.DriverStation;
 public class RobotMap {
     public static final byte
             // MOTORS
-                leftMotorPair = 8,
-                rightMotorPair = 9,
-                launcherMotorPair = 10,
-                pickupMotor = 7,            
+                TRANSMISSION_MOTOR = 6,
+                PICKUP_MOTOR = 7, 
+                LEFT_MOTOR_PAIR = 8,
+                RIGHT_MOTOR_PAIR = 9,
+                LAUNCHER_MOTOR_PAIR = 10,        
             // COMPRESSOR
-                compressor_relay = 1,
-                compressor_pressure_switch = 1,
-            //Launcher
-                launcher_load_LimitSwitch = 2,
-                launcher_ball_LimitSwitch = 3,
-            //Transmission
-                transmission_neutral = 4,
-                transmission_drive = 5,
+                COMPRESSOR_RELAY = 1,
+                COMPRESSOR_PRESSURE_SWITCH = 1, // GPIO
+            // SOLENOIDS
+                SOLENOID_EXTEND = 3,
+                SOLENOID_RETRACT = 4,
+            // LAUNCHER
+                LAUNCHER_PULLED_DOWN_LIMITSWITCH=  2,
+                LAUNCHER_BALL_LOADED_LIMITSWITCH = 3,
+            // TRANSMISSION
+                TRANSMISSION_NEUTRAL_LIMITSWITCH = 4,
+                TRANSMISSION_DRIVE_LIMITSWITCH = 5,
             // CRIO - ANALOG MODULE
-                GyroSensor = 3;
+                GYRO_SENSOR = 3;
+                //RANGE_SENSOR = X;
 }

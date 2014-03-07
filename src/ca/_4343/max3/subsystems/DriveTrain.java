@@ -5,23 +5,21 @@
 package ca._4343.max3.subsystems;
 
 import ca._4343.RobotMap;
+import ca._4343.max3.commands.drivetrain.DriveWithJoystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * @author Brian Ho <www.4343.ca>
  * @author Tedi Papajorgji <www.4343.ca>
  */
 public class DriveTrain extends Subsystem {
 
     
-    final private RobotDrive drive = new RobotDrive(RobotMap.rightMotorPair, RobotMap.leftMotorPair);
+    final private RobotDrive drive = new RobotDrive(RobotMap.RIGHT_MOTOR_PAIR, RobotMap.LEFT_MOTOR_PAIR);
     
-    public DriveTrain() {
-        super("DriveTrain");
-    }
-
     public void initDefaultCommand() {
+        setDefaultCommand(new DriveWithJoystick());
     }
     
     /**
@@ -34,7 +32,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * Drive the robot using arcade style.
+     * Drive the robot using arcade style
      * @param x Forward and backwards speed
      * @param y Rotation speed 
      */
@@ -46,7 +44,7 @@ public class DriveTrain extends Subsystem {
      * Disable motor safety, stops 'Robot drive not updated enough...' error
      * @param value Either true or false. 'True' to enable safety and 'False' to disable
      */
-    public void toggleSaftey(boolean value) {
+    public void toggleSafety(boolean value) {
         drive.setSafetyEnabled(value);
     }
 }

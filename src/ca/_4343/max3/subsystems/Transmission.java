@@ -4,6 +4,12 @@
  */
 package ca._4343.max3.subsystems;
 
+import ca._4343.RobotConstants;
+import ca._4343.RobotMap;
+import ca._4343.max3.commands.transmission.TransmissionDoNothing;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,6 +19,56 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Transmission extends Subsystem {
     
+    final private SpeedController transmissionMotor = new Victor(RobotMap.TRANSMISSION_MOTOR);
+    final private DigitalInput neutral = new DigitalInput(RobotMap.TRANSMISSION_NEUTRAL_LIMITSWITCH);
+    final private DigitalInput drive = new DigitalInput(RobotMap.TRANSMISSION_DRIVE_LIMITSWITCH);
+    
+    /**
+     * Sets default command for transmission to do nothing
+     */
     public void initDefaultCommand() {
+        setDefaultCommand(new TransmissionDoNothing());
     }
+    
+    /**
+     * Gets position of transmission
+     * @return True if transmission is in neutral position
+     */
+    public boolean getNeutral() {
+        return neutral.get();
+    }
+    
+    /**
+     * Turns the transmission motor neutral position
+     */
+    public void setNeutral() {
+        if(!getNeutral()) {
+            transmissionMotor.set(1);
+        }
+    }
+    
+    /**
+     * Gets position of transmission
+     * @return True if transmission is in drive position
+     */
+    public boolean getDrive() {
+        return drive.get();
+    }
+    
+    /**
+     * Turns the transmission motor to drive position
+     */
+    public void setDrive() {
+        if(!getDrive()) {
+            transmissionMotor.set(RobotConstants.TRANSMISSION_ROTATE_TO_DRIVE_SPEED);
+        }
+    }
+    
+    /**
+     * Stops the tranmission motor
+     */
+    public void stop() {
+       transmissionMotor.set(0); 
+    }
+   
 }
