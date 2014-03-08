@@ -18,7 +18,11 @@ public class RobotConstants {
             EXPEL_BALL_TIMEOUT = 1,
             UNSTICK_BALL_TIMEOUT = 1,
             EXTEND_ARM_TIMEOUT = 3,
-            AUTONOMOUS_DRIVE_FORWARD_DURATION = 1;
+            AUTONOMOUS_DRIVE_DURATION = 1,
+            AUTONOMOUS_SINGLE_BALL_HOT_GOAL_TIMEOUT = 6.5,
+            AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT = 1,
+            AUTONOMOUS_MOTOR_TURN_SPEED = 0.65,
+            AUTONOMOUS_TURN_DURATION = 0.4;
     
     /*
     Vision Tracking Constants
@@ -42,4 +46,6 @@ public class RobotConstants {
 
         //Maximum number of particles to process
             public static final int MAX_PARTICLES = 8;
+            
+           
 }

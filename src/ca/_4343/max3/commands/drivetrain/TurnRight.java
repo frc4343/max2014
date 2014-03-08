@@ -4,6 +4,7 @@
  */
 package ca._4343.max3.commands.drivetrain;
 
+import ca._4343.RobotConstants;
 import ca._4343.max3.commands.CommandBase;
 
 /**
@@ -11,9 +12,9 @@ import ca._4343.max3.commands.CommandBase;
  * @author Brian Ho <www.4343.ca>
  * @author Tedi Papajorgji <www.4343.ca>
  */
-public class DriveForward extends CommandBase {
+public class TurnRight extends CommandBase {
     
-    public DriveForward() {
+    public TurnRight() {
         requires(driveTrain);
     }
 
@@ -23,7 +24,7 @@ public class DriveForward extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.arcadeDrive(1, 0);
+        driveTrain.tankDrive(RobotConstants.AUTONOMOUS_MOTOR_TURN_SPEED, -RobotConstants.AUTONOMOUS_MOTOR_TURN_SPEED);
     }
 
     // Make this return true when this Command no longer needs to run execute()

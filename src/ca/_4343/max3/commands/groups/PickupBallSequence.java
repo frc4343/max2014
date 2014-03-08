@@ -21,8 +21,8 @@ public class PickupBallSequence extends CommandGroup {
      * retract the arm to lock it in place
      */
     public PickupBallSequence() {
-        addParallel(new ExtendArm());
-        addParallel(new LoadBall());
+        addSequential(new ExtendArm());
+        addSequential(new LoadBall());
         addSequential(new RetractArm());
     }
 }

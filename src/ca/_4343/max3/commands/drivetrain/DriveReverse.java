@@ -11,9 +11,9 @@ import ca._4343.max3.commands.CommandBase;
  * @author Brian Ho <www.4343.ca>
  * @author Tedi Papajorgji <www.4343.ca>
  */
-public class DriveForward extends CommandBase {
+public class DriveReverse extends CommandBase {
     
-    public DriveForward() {
+    public DriveReverse() {
         requires(driveTrain);
     }
 
@@ -23,12 +23,12 @@ public class DriveForward extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.arcadeDrive(1, 0);
+        driveTrain.arcadeDrive(-1, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

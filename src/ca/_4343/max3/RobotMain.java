@@ -12,6 +12,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import ca._4343.max3.commands.CommandBase;
+import ca._4343.max3.commands.autonomous.hot.groups.DoubleBallLeftSequence;
+import ca._4343.max3.commands.autonomous.hot.groups.DoubleBallRightSequence;
+import ca._4343.max3.commands.autonomous.hot.groups.SingleBallSequence;
+import ca._4343.max3.commands.autonomous.ignorehot.groups.DoubleBallNotHotSequence;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,7 +28,9 @@ import ca._4343.max3.commands.CommandBase;
  */
 public class RobotMain extends IterativeRobot {
 
-    //Command autonomousCommand;
+    CommandGroup autonomousCommandGroup;
+    SendableChooser pickAutonomous;
+    
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,11 +42,18 @@ public class RobotMain extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
+        
+        pickAutonomous = new SendableChooser();
+        pickAutonomous.addDefault("1 Ball Hot | Any Side", new SingleBallSequence());
+        pickAutonomous.addObject("2 Ball No Hot | Any Side", new DoubleBallNotHotSequence());
+        pickAutonomous.addObject("2 Ball Hot | Left Side", new DoubleBallLeftSequence());
+        pickAutonomous.addObject("2 Ball Hot | Right Side", new DoubleBallRightSequence());
+        
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
-        //autonomousCommand.start();
+        autonomousCommandGroup = (CommandGroup) pickAutonomous.getSelected();
+        autonomousCommandGroup.start();
     }
 
     /**
@@ -49,11 +64,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
-	// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        //autonomousCommand.cancel();
+        autonomousCommandGroup.cancel();
     }
 
     /**
