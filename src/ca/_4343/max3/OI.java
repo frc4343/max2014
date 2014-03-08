@@ -1,6 +1,13 @@
 
 package ca._4343.max3;
 
+import ca._4343.max3.commands.groups.FireAndReloadSequence;
+import ca._4343.max3.commands.groups.FireSequence;
+import ca._4343.max3.commands.groups.PickupBallSequence;
+import ca._4343.max3.commands.groups.PullDownLauncherSequence;
+import ca._4343.max3.commands.pickup.ExpelBall;
+import ca._4343.max3.commands.pickup.RetractArm;
+import ca._4343.max3.commands.transmission.TransmissionDoNothing;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -8,20 +15,25 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
+ * @author Brian Ho <www.4343.ca>
+ * @author Tedi Papajorgji <www.4343.ca>
  */
 public class OI {
     
     public OI() {
-        /*xbox2_L1.whenPressed(new EngageTransmissionAndPullDownLauncher()); // Load
-        xbox2_B.whenPressed(new ForceLoad()); // Load
-        xbox2_A.whenPressed(new UnJamLauncher()); // Load
-        xbox1_R1.whenPressed(new ExtendPickupAndDisengageTransmission()); // Fire
-        xbox1_X.toggleWhenPressed(new RetractPickupAndExpelBall()); // ExpelBall
-        xbox1_Y.toggleWhenPressed(new ExtendPickupAndLoadBall());   // LoadBall
-        xbox2_Y.toggleWhenPressed(new FireAndReload());  
-        xbox1_A.whenPressed(new FireAndReload()); // Auto Fire and REload
+        // Xbox 1 Buttons
+        xbox1_X.toggleWhenPressed(new ExpelBall());
+        xbox1_Y.toggleWhenPressed(new PickupBallSequence());
+        xbox1_A.whenPressed(new FireAndReloadSequence());
+        
+        
+        // Xbox 2 Buttons
+        xbox2_L1.whenPressed(new PullDownLauncherSequence());
+        xbox2_R1.whenPressed(new FireSequence());
+        xbox2_A.whenPressed(new TransmissionDoNothing());
         xbox1_B.whenPressed(new RetractArm());
-        xbox1_START.whileHeld(new VisionTest());*/
+        xbox2_Y.whenPressed(new FireAndReloadSequence());
+        
     }
     /**
      * @return X axis on controller 

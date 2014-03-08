@@ -203,9 +203,6 @@ public class Camera extends Subsystem {
      * perform additional measurements
      * @param report The Particle Analysis Report for the particle, used for the
      * width, height, and particle number
-     * @param outer	Indicates whether the particle aspect ratio should be
-     * compared to the ratio for the inner target or the outer
-     * @return The aspect ratio score (0-100)
      */
     public double scoreAspectRatio(BinaryImage image, ParticleAnalysisReport report, int particleNumber, boolean vertical) throws NIVisionException {
         double rectLong, rectShort, aspectRatio, idealAspectRatio;
