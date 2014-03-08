@@ -35,6 +35,7 @@ public class OI {
     public double getY() {
         return Math.abs(xbox1.getRawAxis(1)) >= 0.2 ? xbox1.getRawAxis(1) : 0;
     }
+    
     //Joystick's
     Joystick xbox1 = new Joystick(1);
     Joystick xbox2 = new Joystick(2);
