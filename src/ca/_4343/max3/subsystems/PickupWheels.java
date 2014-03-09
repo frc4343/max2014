@@ -7,7 +7,6 @@ package ca._4343.max3.subsystems;
 import ca._4343.RobotConstants;
 import ca._4343.RobotMap;
 import ca._4343.max3.commands.pickup.PickupWheelsDoNothing;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
