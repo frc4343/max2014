@@ -8,7 +8,7 @@ import ca._4343.max3.subsystems.Basket;
 import ca._4343.max3.subsystems.Camera;
 import ca._4343.max3.subsystems.DriveTrain;
 import ca._4343.max3.subsystems.Launcher;
-import ca._4343.max3.subsystems.PickUp;
+import ca._4343.max3.subsystems.PickupArm;
 import ca._4343.max3.subsystems.PickupWheels;
 import ca._4343.max3.subsystems.Transmission;
 
@@ -27,11 +27,11 @@ public abstract class CommandBase extends Command {
     public static DriveTrain driveTrain = new DriveTrain();
     public static Transmission transmission = new Transmission();
     public static Launcher launcher = new Launcher();
-    public static PickUp pickUp = new PickUp();
-    public static Camera camera = new Camera();
+    public static PickupArm pickupArm = new PickupArm();
     public static PickupWheels pickupWheels = new PickupWheels();
     public static Basket basket = new Basket();
-
+    public static Camera camera = new Camera();
+    
     public static void init() {
         // Must be here, don't delete
         oi = new OI();

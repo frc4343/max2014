@@ -14,7 +14,7 @@ import ca._4343.max3.commands.CommandBase;
 public class RetractArm extends CommandBase {
     
     public RetractArm() {
-        requires(pickUp);
+        requires(pickupArm);
     }
 
     /**
@@ -29,7 +29,7 @@ public class RetractArm extends CommandBase {
      * Retracts the pickup arm 
      */
     protected void execute() {
-        pickUp.retract();
+        pickupArm.retract();
     }
     
     /**

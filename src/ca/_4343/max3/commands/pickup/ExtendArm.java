@@ -15,7 +15,7 @@ import ca._4343.max3.commands.CommandBase;
 public class ExtendArm extends CommandBase {
     
     public ExtendArm() {
-        requires(pickUp);
+        requires(pickupArm);
     }
 
     /**
@@ -30,7 +30,7 @@ public class ExtendArm extends CommandBase {
      * Extends the pickup arm 
      */
     protected void execute() {
-        pickUp.extend();
+        pickupArm.extend();
     }
     
     /**

@@ -15,7 +15,7 @@ import ca._4343.max3.commands.CommandBase;
 public class ExpelBall extends CommandBase {
     
     public ExpelBall() {
-        requires(pickUp);
+        requires(pickupArm);
         requires(pickupWheels);
     }
 
@@ -32,7 +32,7 @@ public class ExpelBall extends CommandBase {
      * in reverse to expel the ball.
      */
     protected void execute() {
-        pickUp.retract();
+        pickupArm.retract();
         pickupWheels.expel();
     }
     
