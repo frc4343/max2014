@@ -1,10 +1,10 @@
 
 package ca._4343.max3;
 
-import ca._4343.max3.commands.groups.FireAndReloadSequence;
-import ca._4343.max3.commands.groups.FireSequence;
-import ca._4343.max3.commands.groups.PickupBallSequence;
-import ca._4343.max3.commands.groups.PullDownLauncherSequence;
+import ca._4343.max3.commandGroups.FireAndReloadSequence;
+import ca._4343.max3.commandGroups.FireSequence;
+import ca._4343.max3.commandGroups.PickupBallSequence;
+import ca._4343.max3.commandGroups.PullDownLauncherSequence;
 import ca._4343.max3.commands.pickup.ExpelBall;
 import ca._4343.max3.commands.pickup.RetractArm;
 import ca._4343.max3.commands.transmission.TransmissionDoNothing;

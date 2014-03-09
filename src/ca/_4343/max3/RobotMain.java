@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import ca._4343.max3.commands.CommandBase;
-import ca._4343.max3.commands.autonomous.hot.groups.DoubleBallLeftSequence;
-import ca._4343.max3.commands.autonomous.hot.groups.DoubleBallRightSequence;
-import ca._4343.max3.commands.autonomous.hot.groups.SingleBallSequence;
-import ca._4343.max3.commands.autonomous.ignorehot.groups.DoubleBallNotHotSequence;
+import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallLeftSequence;
+import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallRightSequence;
+import ca._4343.max3.commandGroups.autonomous.hot.SingleBallSequence;
+import ca._4343.max3.commandGroups.autonomous.ignoreHot.DoubleBallNotHotSequence;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 

@@ -2,7 +2,7 @@
  * FRC Team 4343
  * Visit us at www.4343.ca
  */
-package ca._4343.max3.commands.groups;
+package ca._4343.max3.commandGroups;
 
 import ca._4343.max3.commands.pickup.ExtendArm;
 import ca._4343.max3.commands.pickup.LoadBall;

@@ -25,8 +25,8 @@ public class RobotConstants {
             AUTONOMOUS_TURN_DURATION = 0.4;
     
     /*
-    Vision Tracking Constants
-    */
+     * Vision Tracking Constants
+     */
         //Camera constants used for distance calculation
             public static final int Y_IMAGE_RES = 480;		//X Image resolution in pixels, should be 120, 240 or 480
             public static final double VIEW_ANGLE = 37.4;  //Axis M1011 camera

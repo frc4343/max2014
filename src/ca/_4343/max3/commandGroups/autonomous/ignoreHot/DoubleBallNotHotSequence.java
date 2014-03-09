@@ -2,10 +2,10 @@
  * FRC Team 4343
  * Visit us at www.4343.ca
  */
-package ca._4343.max3.commands.autonomous.ignorehot.groups;
+package ca._4343.max3.commandGroups.autonomous.ignoreHot;
 
 import ca._4343.max3.commands.drivetrain.DriveForward;
-import ca._4343.max3.commands.groups.FireAndReloadSequence;
+import ca._4343.max3.commandGroups.FireAndReloadSequence;
 import ca._4343.max3.commands.pickup.LoadBall;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
