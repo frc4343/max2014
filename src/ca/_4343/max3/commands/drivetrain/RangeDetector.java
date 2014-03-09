@@ -27,7 +27,7 @@ public class RangeDetector extends CommandBase {
     protected void execute() {
         if(rangeFinder.getDistanceInInches() <= RobotConstants.TOO_CLOSE_DISTANCE) {
             lights.setColour("red");
-        } else if (rangeFinder.getDistanceInInches() >= RobotConstants.TOO_CLOSE_DISTANCE && rangeFinder.getDistanceInInches() <= RobotConstants.TOO_FAR_DISTANCE) {
+        } else if ((rangeFinder.getDistanceInInches() >= RobotConstants.TOO_CLOSE_DISTANCE) && (rangeFinder.getDistanceInInches() <= RobotConstants.TOO_FAR_DISTANCE)) {
             lights.setColour("green");
         } else {
             lights.setColour("blue");
