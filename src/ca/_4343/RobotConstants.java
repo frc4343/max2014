@@ -19,6 +19,9 @@ public class RobotConstants {
             EXPEL_BALL_TIMEOUT = 1,
             UNSTICK_BALL_DURATION = 1,
             TIME_REQUIRED_TO_EXTEND_ARM = 3,
+            // Distance Variables
+            TOO_CLOSE_DISTANCE = 0, // Placeholder
+            TOO_FAR_DISTANCE = 0, // Placeholder
             // Autonomous Variables
             AUTONOMOUS_DRIVE_DURATION = 1,
             AUTONOMOUS_TURN_DURATION = 0.4,

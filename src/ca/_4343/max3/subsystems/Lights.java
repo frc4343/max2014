@@ -46,7 +46,7 @@ public class Lights extends Subsystem {
     /**
      * Turns off other colours first to have enough voltage then turns on red
      */
-    public void setRed() {
+    private void setRed() {
         blue.set(false);
         green.set(false);
         red.set(true);
@@ -55,7 +55,7 @@ public class Lights extends Subsystem {
     /**
      * Turns off other colours first to have enough voltage then turns on red
      */
-    public void setGreen() {
+    private void setGreen() {
         blue.set(false);
         red.set(false);
         green.set(true);
@@ -64,7 +64,7 @@ public class Lights extends Subsystem {
     /**
      * Turns off other colours first to have enough voltage then turns on blue
      */
-    public void setBlue() {
+    private void setBlue() {
         red.set(false);
         green.set(false);
         blue.set(true);
@@ -73,7 +73,7 @@ public class Lights extends Subsystem {
     /**
      * Turns off all colours
      */
-    public void turnOff() {
+    private void turnOff() {
         red.set(false);
         green.set(false);
         blue.set(false);
