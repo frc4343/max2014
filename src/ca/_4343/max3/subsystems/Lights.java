@@ -5,6 +5,7 @@
 package ca._4343.max3.subsystems;
 
 import ca._4343.RobotMap;
+import ca._4343.max3.commands.drivetrain.RangeDetector;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -21,10 +22,10 @@ public class Lights extends Subsystem {
     private final Solenoid blue = new Solenoid(4, RobotMap.SOLENOID_BLUE_LED);
     
     /**
-     * There is no default state for this subsystem
+     * Always scan for range
      */
     public void initDefaultCommand() {
-        // range sensor stuff
+        setDefaultCommand(new RangeDetector());
     }
     
     /**
