@@ -23,6 +23,9 @@ public class RobotMap {
             // SOLENOIDS
                 SOLENOID_EXTEND = 3,
                 SOLENOID_RETRACT = 4,
+                SOLENOID_RED_LED = 1,
+                SOLENOID_GREEN_LED = 2,
+                SOLENOID_BLUE_LED = 3,
             // LAUNCHER
                 LAUNCHER_PULLED_DOWN_LIMITSWITCH=  2,
                 LAUNCHER_BALL_LOADED_LIMITSWITCH = 3,
