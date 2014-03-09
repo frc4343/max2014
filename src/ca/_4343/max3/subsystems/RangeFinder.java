@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RangeFinder extends Subsystem {
     
-    // Solenoid Module 4
-    private final AnalogChannel rangeFinder = new AnalogChannel(1);
+    // Analog Module 1
+    private final AnalogChannel rangeFinder = new AnalogChannel(1,1);
     
     /**
      * There is no default state for this subsystem

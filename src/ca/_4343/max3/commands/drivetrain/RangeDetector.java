@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * FRC Team 4343
+ * Visit us at www.4343.ca
  */
 package ca._4343.max3.commands.drivetrain;
 
@@ -10,7 +9,8 @@ import ca._4343.max3.commands.CommandBase;
 
 /**
  *
- * @author Brian
+ * @author Brian Ho <www.4343.ca>
+ * @author Tedi Papajorgji <www.4343.ca>
  */
 public class RangeDetector extends CommandBase {
     
