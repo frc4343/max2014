@@ -6,6 +6,7 @@ package ca._4343.max3.subsystems;
 
 import ca._4343.RobotConstants;
 import ca._4343.RobotMap;
+import ca._4343.max3.commands.pickup.PickupWheelsDoNothing;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
@@ -47,7 +48,14 @@ public class PickupWheels extends Subsystem {
         pickupMotor.set(-RobotConstants.PICKUP_UNSTICK_BALL_SPEED);
     }
     
+    /**
+     * Stops the pickup wheels
+     */
+    public void stop() {
+        pickupMotor.set(0);
+    }
+    
     public void initDefaultCommand() {
-
+        setDefaultCommand(new PickupWheelsDoNothing());
     }
 }

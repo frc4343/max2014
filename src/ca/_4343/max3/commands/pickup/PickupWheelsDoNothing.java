@@ -2,20 +2,20 @@
  * FRC Team 4343
  * Visit us at www.4343.ca
  */
-package ca._4343.max3.commands.launcher;
+package ca._4343.max3.commands.pickup;
 
 import ca._4343.max3.commands.CommandBase;
 
 /**
- * Default command for launcher subsystem. Causes the launcher
- * motor to stop when it is not in use.
+ * Default command for pickup wheels subsystem. Causes the pickup wheels
+ * to stop spinning when not in use.
  * @author Brian Ho <www.4343.ca>
  * @author Tedi Papajorgji <www.4343.ca>
  */
-public class LauncherDoNothing extends CommandBase {
+public class PickupWheelsDoNothing extends CommandBase {
     
-    public LauncherDoNothing() {
-        requires(launcher);
+    public PickupWheelsDoNothing() {
+        requires(pickupWheels);
     }
 
     /**
@@ -25,16 +25,17 @@ public class LauncherDoNothing extends CommandBase {
     }
 
     /**
-     * Called repeatedly when this Command is scheduled to run
-     * Stops the launcher motor from winding
+     * Called repeatedly when this Command is scheduled to run,
+     * Stops the pickup wheels from spinning.
      */
     protected void execute() {
-        launcher.stop();
+        pickupWheels.stop();
+        
     }
 
     /**
      * Always returns false because it is the default command
-     * of the launcher subsystem
+     * of the PickupWheels subsystem
      * @return False ALWAYS
      */
     protected boolean isFinished() {
