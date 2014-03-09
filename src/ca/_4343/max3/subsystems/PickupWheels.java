@@ -44,7 +44,7 @@ public class PickupWheels extends Subsystem {
      * of the basket as the pickup is being extended
      */
     public void unstickBall() {
-        pickupMotor.set(-RobotConstants.PICKUP_UNSTICK_BALL_SPEED);
+        pickupMotor.set(-RobotConstants.PICKUP_WHEELS_UNSTICK_BALL_SPEED);
     }
     
     /**

@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import ca._4343.max3.OI;
 import ca._4343.max3.subsystems.AirCompressor;
+import ca._4343.max3.subsystems.Basket;
 import ca._4343.max3.subsystems.Camera;
 import ca._4343.max3.subsystems.DriveTrain;
 import ca._4343.max3.subsystems.Launcher;
@@ -29,6 +30,7 @@ public abstract class CommandBase extends Command {
     public static PickUp pickUp = new PickUp();
     public static Camera camera = new Camera();
     public static PickupWheels pickupWheels = new PickupWheels();
+    public static Basket basket = new Basket();
 
     public static void init() {
         // Must be here, don't delete

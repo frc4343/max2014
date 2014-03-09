@@ -14,8 +14,8 @@ import ca._4343.max3.commands.CommandBase;
 public class LoadBall extends CommandBase {
     
     public LoadBall() {
-        requires(pickUp);
         requires(pickupWheels);
+        requires(basket);
     }
 
     /**
@@ -30,7 +30,7 @@ public class LoadBall extends CommandBase {
      * Runs pickup wheels
      */
     protected void execute() {
-        if(!pickUp.isBallLoaded()) {
+        if(!basket.isBallLoaded()) {
             pickupWheels.load();
         }
     }
@@ -40,7 +40,7 @@ public class LoadBall extends CommandBase {
      * @return True if the ball is loaded
      */
     protected boolean isFinished() {
-        return pickUp.isBallLoaded();
+        return basket.isBallLoaded();
     }
     
     /**

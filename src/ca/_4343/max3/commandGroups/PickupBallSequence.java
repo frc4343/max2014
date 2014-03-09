@@ -21,8 +21,8 @@ public class PickupBallSequence extends CommandGroup {
      * retract the arm to lock it in place
      */
     public PickupBallSequence() {
-        addSequential(new ExtendArm()); //We could potentially delete the timer contained within the command and just set a timeout here
-        addSequential(new LoadBall());
+        addParallel(new ExtendArm());
+        addParallel(new LoadBall());
         addSequential(new RetractArm());
     }
 }

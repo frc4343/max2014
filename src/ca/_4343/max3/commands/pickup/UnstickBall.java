@@ -23,7 +23,7 @@ public class UnstickBall extends CommandBase {
      * Starts a timer
      */
     protected void initialize() {
-        setTimeout(RobotConstants.UNSTICK_BALL_TIMEOUT);
+        setTimeout(RobotConstants.UNSTICK_BALL_DURATION);
     }
 
     /**

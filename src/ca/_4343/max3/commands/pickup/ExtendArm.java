@@ -22,7 +22,7 @@ public class ExtendArm extends CommandBase {
      * Called just before this Command runs the first time
      */
     protected void initialize() {
-        setTimeout(RobotConstants.EXTEND_ARM_TIMEOUT);
+        setTimeout(RobotConstants.TIME_REQUIRED_TO_EXTEND_ARM);
     }
 
     /**

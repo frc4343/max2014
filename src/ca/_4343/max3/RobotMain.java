@@ -8,6 +8,8 @@
 package ca._4343.max3;
 
 
+import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallAlternativeLeftSequence;
+import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallAlternativeRightSequence;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -48,6 +50,8 @@ public class RobotMain extends IterativeRobot {
         pickAutonomous.addObject("2 Ball No Hot | Any Side", new DoubleBallNotHotSequence());
         pickAutonomous.addObject("2 Ball Hot | Left Side", new DoubleBallLeftSequence());
         pickAutonomous.addObject("2 Ball Hot | Right Side", new DoubleBallRightSequence());
+        pickAutonomous.addObject("2 Ball Hot ALT | Left Side", new DoubleBallAlternativeLeftSequence());
+        pickAutonomous.addObject("2 Ball Hot ALT | Right Side", new DoubleBallAlternativeRightSequence());
         
     }
 
