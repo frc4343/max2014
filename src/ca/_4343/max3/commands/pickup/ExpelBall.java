@@ -16,6 +16,7 @@ public class ExpelBall extends CommandBase {
     
     public ExpelBall() {
         requires(pickUp);
+        requires(pickupWheels);
     }
 
     /**
@@ -27,10 +28,12 @@ public class ExpelBall extends CommandBase {
 
     /**
      * Called repeatedly when this Command is scheduled to run
-     * Runs pickup wheels to expel ball
+     * Retracts the loader arm and runs the pickup wheels
+     * in reverse to expel the ball.
      */
     protected void execute() {
-        pickUp.expel();
+        pickUp.retract();
+        pickupWheels.expel();
     }
     
     /**

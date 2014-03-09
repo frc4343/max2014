@@ -15,7 +15,7 @@ import ca._4343.max3.commands.CommandBase;
 public class UnstickBall extends CommandBase {
     
     public UnstickBall() {
-        requires(pickUp);
+        requires(pickupWheels);
     }
 
     /**
@@ -32,7 +32,7 @@ public class UnstickBall extends CommandBase {
      * from basket
      */
     protected void execute() {
-        pickUp.unstickBall();
+        pickupWheels.unstickBall();
     }
     
     /**

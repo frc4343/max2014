@@ -8,6 +8,7 @@ import ca._4343.max3.subsystems.Camera;
 import ca._4343.max3.subsystems.DriveTrain;
 import ca._4343.max3.subsystems.Launcher;
 import ca._4343.max3.subsystems.PickUp;
+import ca._4343.max3.subsystems.PickupWheels;
 import ca._4343.max3.subsystems.Transmission;
 
 /**
@@ -27,6 +28,7 @@ public abstract class CommandBase extends Command {
     public static Launcher launcher = new Launcher();
     public static PickUp pickUp = new PickUp();
     public static Camera camera = new Camera();
+    public static PickupWheels pickupWheels = new PickupWheels();
 
     public static void init() {
         // Must be here, don't delete
@@ -36,6 +38,7 @@ public abstract class CommandBase extends Command {
         SmartDashboard.putData(driveTrain);
         SmartDashboard.putData(transmission);
         SmartDashboard.putData(launcher);
+        SmartDashboard.putData(pickupWheels);
     }
 
     public CommandBase(String name) {

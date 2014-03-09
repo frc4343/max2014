@@ -21,45 +21,11 @@ public class PickUp extends Subsystem {
     
     private final Solenoid extend = new Solenoid(RobotMap.SOLENOID_EXTEND);
     private final Solenoid retract = new Solenoid(RobotMap.SOLENOID_RETRACT);
-    private final SpeedController pickupMotor = new Victor(RobotMap.PICKUP_MOTOR);
     private final DigitalInput ballLoaded = new DigitalInput(RobotMap.LAUNCHER_BALL_LOADED_LIMITSWITCH);
-
+    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    }
-    
-    /**
-     * Runs pickup wheels to load ball
-     */
-    public void load() {
-        pickupMotor.set(-1);
-    }
-    
-    /**
-     * Runs the pickup wheels in reverse and also ensures pickup
-     * arm is in the retracted position
-     */
-    public void expel() {
-        retract();
-        pickupMotor.set(1);
-    }
-    
-    /**
-     * Runs the motor in the opposite direction (keeps ball in basket)
-     * This is useful because the ball has a tendency to roll out
-     * of the basket as the pickup is being extended
-     */
-    public void unstickBall() {
-        pickupMotor.set(-RobotConstants.PICKUP_UNSTICK_BALL_SPEED);
-    }
-
-    /**
-     * Checks if the ball is within the basket
-     * @return True if ball is inside basket
-     */
-    public boolean isBallLoaded() {
-        return ballLoaded.get();
     }
     
     /**
@@ -76,5 +42,13 @@ public class PickUp extends Subsystem {
     public void retract() {
         extend.set(false);
         retract.set(true);
+    }
+    
+    /**
+     * Checks if the ball is within the basket
+     * @return True if ball is inside basket
+     */
+    public boolean isBallLoaded() {
+        return ballLoaded.get();
     }
 }

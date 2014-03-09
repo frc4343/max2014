@@ -15,6 +15,7 @@ public class LoadBall extends CommandBase {
     
     public LoadBall() {
         requires(pickUp);
+        requires(pickupWheels);
     }
 
     /**
@@ -30,7 +31,7 @@ public class LoadBall extends CommandBase {
      */
     protected void execute() {
         if(!pickUp.isBallLoaded()) {
-            pickUp.load();
+            pickupWheels.load();
         }
     }
     
