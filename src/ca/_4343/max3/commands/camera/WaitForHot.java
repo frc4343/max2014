@@ -5,6 +5,7 @@
 package ca._4343.max3.commands.camera;
 
 import ca._4343.max3.commands.CommandBase;
+import ca._4343.util.Camera;
 
 /**
  *
@@ -14,7 +15,6 @@ import ca._4343.max3.commands.CommandBase;
 public class WaitForHot extends CommandBase {
     
     public WaitForHot() {
-        requires(camera);
     }
 
     // Called just before this Command runs the first time
@@ -27,7 +27,7 @@ public class WaitForHot extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return camera.foundTarget();
+        return Camera.isHotTarget();
     }
 
     // Called once after isFinished returns true

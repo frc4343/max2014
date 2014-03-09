@@ -5,7 +5,6 @@
 package ca._4343.max3.commandGroups.autonomous.hot;
 
 import ca._4343.RobotConstants;
-import ca._4343.max3.commands.camera.WaitForHot;
 import ca._4343.max3.commands.drivetrain.DriveForward;
 import ca._4343.max3.commands.drivetrain.TurnLeft;
 import ca._4343.max3.commands.drivetrain.TurnRight;
@@ -13,6 +12,7 @@ import ca._4343.max3.commandGroups.FireAndReloadSequence;
 import ca._4343.max3.commands.pickup.ExtendArm;
 import ca._4343.max3.commands.pickup.LoadBall;
 import ca._4343.max3.commands.pickup.RetractArm;
+import ca._4343.util.Camera;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -21,12 +21,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * @author Tedi Papajorgji <www.4343.ca>
  */
 public class DoubleBallLeftSequence extends CommandGroup {
-    boolean isHot = false;
     public DoubleBallLeftSequence() {
-        setTimeout(RobotConstants.AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT);
-        addSequential(new WaitForHot(), RobotConstants.AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT);
-        isHot = !isTimedOut();
-        if (isHot) {
+        if (Camera.isHotTarget()) {
             addSequential(new FireAndReloadSequence());
             addSequential(new LoadBall());
             addSequential(new TurnRight(), RobotConstants.AUTONOMOUS_TURN_DURATION);

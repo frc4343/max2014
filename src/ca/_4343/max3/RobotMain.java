@@ -18,6 +18,7 @@ import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallLeftSequence;
 import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallRightSequence;
 import ca._4343.max3.commandGroups.autonomous.hot.SingleBallSequence;
 import ca._4343.max3.commandGroups.autonomous.ignoreHot.DoubleBallNotHotSequence;
+import ca._4343.util.Camera;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
@@ -44,6 +45,7 @@ public class RobotMain extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
+        Camera.cameraInit();
         
         pickAutonomous = new SendableChooser();
         pickAutonomous.addDefault("1 Ball Hot | Any Side", new SingleBallSequence());
