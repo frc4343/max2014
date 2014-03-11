@@ -16,9 +16,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class PickupArm extends Subsystem {
     
+    // Solenoid Module 3
     private final DoubleSolenoid pickupArm = new DoubleSolenoid(3, RobotMap.SOLENOID_EXTEND, RobotMap.SOLENOID_RETRACT); // Module 3 in cRio
-    //private final Solenoid extend = new Solenoid(RobotMap.SOLENOID_EXTEND);
-    //private final Solenoid retract = new Solenoid(RobotMap.SOLENOID_RETRACT);
+    //private final Solenoid extend = new Solenoid(3, RobotMap.SOLENOID_EXTEND);
+    //private final Solenoid retract = new Solenoid(3, RobotMap.SOLENOID_RETRACT);
     
     /**
      * There is no default state for this subsystem

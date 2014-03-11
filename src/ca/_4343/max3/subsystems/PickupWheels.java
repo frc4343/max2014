@@ -32,7 +32,7 @@ public class PickupWheels extends Subsystem {
      * The command that calls this should make sure to call
      * the retract() method contained in the PickUp subsystem.
      * This is to ensure that when you expel a ball, the pickup
-     * arm is actually 
+     * arm is actually retracted
      */
     public void expel() {
         pickupMotor.set(1);
