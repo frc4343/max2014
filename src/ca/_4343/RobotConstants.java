@@ -27,5 +27,8 @@ public class RobotConstants {
             AUTONOMOUS_TURN_DURATION = 0.4,
             AUTONOMOUS_MOTOR_TURN_SPEED = 0.65,
             AUTONOMOUS_SINGLE_BALL_HOT_GOAL_TIMEOUT = 6.5,
-            AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT = 1;
+            AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT = 1,
+            AUTONOMOUS_OPTIMAL_DISTANCE_FROM_GOAL = 300, // placeholder in inches
+            AUTONOMOUS_OPTIMAL_DISTANCE_FOR_BALL_PICKUP = 500, // placeholder in inches
+            AUTONOMOUS_TURN_TO_ANGLE = 45; // placeholder in degrees
 }

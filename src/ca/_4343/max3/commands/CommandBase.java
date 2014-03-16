@@ -6,6 +6,7 @@ import ca._4343.max3.OI;
 import ca._4343.max3.subsystems.AirCompressor;
 import ca._4343.max3.subsystems.Basket;
 import ca._4343.max3.subsystems.DriveTrain;
+import ca._4343.max3.subsystems.GyroSubsystem;
 import ca._4343.max3.subsystems.Launcher;
 import ca._4343.max3.subsystems.Lights;
 import ca._4343.max3.subsystems.PickupArm;
@@ -33,6 +34,7 @@ public abstract class CommandBase extends Command {
     public static Basket basket = new Basket();
     public static Lights lights = new Lights();
     public static RangeFinder rangeFinder = new RangeFinder();
+    public static GyroSubsystem gyro = new GyroSubsystem();
     
     public static void init() {
         // Must be here, don't delete
