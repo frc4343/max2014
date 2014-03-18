@@ -47,7 +47,11 @@ public class Launcher extends Subsystem {
      * so that it pulls down as fast as possible (AFAP)
      */
     public void fullSpeedPullDown() {
-        set(1);
+        if (!isPulledDown()) {
+            set(1);
+        } else {
+            stop(); // Incase button is repeatly pressed
+        }
     }
     
     /**

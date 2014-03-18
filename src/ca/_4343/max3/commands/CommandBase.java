@@ -3,8 +3,11 @@ package ca._4343.max3.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import ca._4343.max3.OI;
+import ca._4343.max3.commands.launcher.PullDownLauncher;
+import ca._4343.max3.commands.transmission.EngageTransmission;
 import ca._4343.max3.subsystems.AirCompressor;
 import ca._4343.max3.subsystems.Basket;
+import ca._4343.max3.subsystems.CameraSubsystem;
 import ca._4343.max3.subsystems.DriveTrain;
 import ca._4343.max3.subsystems.GyroSubsystem;
 import ca._4343.max3.subsystems.Launcher;
@@ -13,6 +16,7 @@ import ca._4343.max3.subsystems.PickupArm;
 import ca._4343.max3.subsystems.PickupWheels;
 import ca._4343.max3.subsystems.RangeFinder;
 import ca._4343.max3.subsystems.Transmission;
+import edu.wpi.first.wpilibj.DriverStation;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -25,6 +29,7 @@ import ca._4343.max3.subsystems.Transmission;
 public abstract class CommandBase extends Command {
 
     public static OI oi;
+    public static DriverStation ds;
     public static AirCompressor airCompressor = new AirCompressor();
     public static DriveTrain driveTrain = new DriveTrain();
     public static Transmission transmission = new Transmission();
@@ -35,16 +40,24 @@ public abstract class CommandBase extends Command {
     public static Lights lights = new Lights();
     public static RangeFinder rangeFinder = new RangeFinder();
     public static GyroSubsystem gyro = new GyroSubsystem();
+    public static CameraSubsystem camera = new CameraSubsystem();
     
     public static void init() {
         // Must be here, don't delete
         oi = new OI();
-
         // Show what command your subsystem is running on the SmartDashboard
         SmartDashboard.putData(driveTrain);
         SmartDashboard.putData(transmission);
         SmartDashboard.putData(launcher);
         SmartDashboard.putData(pickupWheels);
+        SmartDashboard.putData(basket);
+        SmartDashboard.putData(lights);
+        SmartDashboard.putData(rangeFinder);
+        SmartDashboard.putData(gyro);
+        SmartDashboard.putData(camera);
+        // VIRTUAL BUTTONS
+        SmartDashboard.putData("Engage Transmission", new EngageTransmission());
+        SmartDashboard.putData("Launcher Full Down", new PullDownLauncher());
     }
 
     public CommandBase(String name) {

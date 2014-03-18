@@ -19,9 +19,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Transmission extends Subsystem {
     
-    final private SpeedController transmissionMotor = new Victor(RobotMap.TRANSMISSION_MOTOR);
-    final private DigitalInput neutral = new DigitalInput(RobotMap.TRANSMISSION_NEUTRAL_LIMITSWITCH);
-    final private DigitalInput drive = new DigitalInput(RobotMap.TRANSMISSION_DRIVE_LIMITSWITCH);
+    private final SpeedController transmissionMotor = new Victor(RobotMap.TRANSMISSION_MOTOR);
+    private final DigitalInput neutral = new DigitalInput(RobotMap.TRANSMISSION_NEUTRAL_LIMITSWITCH);
+    private final DigitalInput drive = new DigitalInput(RobotMap.TRANSMISSION_DRIVE_LIMITSWITCH);
     
     /**
      * Sets default command for transmission to do nothing
@@ -35,7 +35,7 @@ public class Transmission extends Subsystem {
      * @return True if transmission is in neutral position
      */
     public boolean getNeutral() {
-        return neutral.get();
+        return !neutral.get(); // remove ! for actual competition
     }
     
     /**
@@ -44,6 +44,8 @@ public class Transmission extends Subsystem {
     public void setNeutral() {
         if(!getNeutral()) {
             transmissionMotor.set(1);
+        } else {
+            stop(); // Incase button is repeatly pressed
         }
     }
     
@@ -61,6 +63,8 @@ public class Transmission extends Subsystem {
     public void setDrive() {
         if(!getDrive()) {
             transmissionMotor.set(RobotConstants.TRANSMISSION_ROTATE_TO_DRIVE_SPEED);
+        } else {
+            stop(); // Incase button is repeatly pressed
         }
     }
     

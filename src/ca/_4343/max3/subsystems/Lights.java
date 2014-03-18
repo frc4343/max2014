@@ -16,10 +16,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Lights extends Subsystem {
     
-    // Solenoid Module 4
-    private final Solenoid red = new Solenoid(4, RobotMap.SOLENOID_RED_LED);
-    private final Solenoid green = new Solenoid(4, RobotMap.SOLENOID_GREEN_LED);
-    private final Solenoid blue = new Solenoid(4, RobotMap.SOLENOID_BLUE_LED);
+    /*
+       Any module in cRio slot 1-3 are considered module 1,
+       Any module (solenoid, analog, digital) is considered module 2
+       Therefore these objects need to be instantiated referencing to 
+       the 2nd Solenoid Module (12v)
+     */
+    private final Solenoid red = new Solenoid(2, RobotMap.SOLENOID_RED_LED);
+    private final Solenoid green = new Solenoid(2, RobotMap.SOLENOID_GREEN_LED);
+    private final Solenoid blue = new Solenoid(2, RobotMap.SOLENOID_BLUE_LED);
     
     /**
      * Always scan for range

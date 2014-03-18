@@ -29,8 +29,10 @@ public class EngageTransmission extends CommandBase {
      * Turns launcher slowly and sets transmission to drive
      */
     protected void execute() {
-        launcher.turnSlowly();
-        transmission.setDrive();
+        if (!transmission.getDrive()) { // Extra check for launcher.turnSlowly();
+            transmission.setDrive();
+            launcher.turnSlowly();
+        }
     }
     
     /**

@@ -33,7 +33,6 @@ public class RobotMain extends IterativeRobot {
 
     CommandGroup autonomousCommandGroup;
     SendableChooser pickAutonomous;
-    
 
     /**
      * This function is run when the robot is first started up and should be
@@ -45,7 +44,7 @@ public class RobotMain extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
-        Camera.cameraInit();
+        Camera.init();
         
         pickAutonomous = new SendableChooser();
         pickAutonomous.addDefault("1 Ball Hot | Any Side", new SingleBallSequence());
@@ -66,17 +65,21 @@ public class RobotMain extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+        CommandBase.ds = this.m_ds;
         Scheduler.getInstance().run();
     }
 
     public void teleopInit() {
-        autonomousCommandGroup.cancel();
+        if(autonomousCommandGroup != null) { // Fixes error if we try to cancel NOTHING 
+            autonomousCommandGroup.cancel();
+        }
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+        CommandBase.ds = this.m_ds;
         Scheduler.getInstance().run();
     }
     

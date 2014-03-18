@@ -9,10 +9,10 @@ import ca._4343.max3.commands.drivetrain.DriveForward;
 import ca._4343.max3.commands.drivetrain.TurnLeft;
 import ca._4343.max3.commands.drivetrain.TurnRight;
 import ca._4343.max3.commandGroups.FireAndReloadSequence;
+import ca._4343.max3.commands.CommandBase;
 import ca._4343.max3.commands.pickup.ExtendArm;
 import ca._4343.max3.commands.pickup.LoadBall;
 import ca._4343.max3.commands.pickup.RetractArm;
-import ca._4343.util.Camera;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DoubleBallLeftSequence extends CommandGroup {
     public DoubleBallLeftSequence() {
-        if (Camera.isHotTarget()) {
+        if (CommandBase.camera.findTarget()) {
             addSequential(new FireAndReloadSequence());
             addSequential(new LoadBall());
             addSequential(new TurnRight(), RobotConstants.AUTONOMOUS_TURN_DURATION);

@@ -12,13 +12,13 @@ package ca._4343;
 public class RobotConstants {
 
     public static final double // Motor Speeds
-            TRANSMISSION_ROTATE_TO_DRIVE_SPEED = 0.275,
-            LAUNCHER_TURN_SLOWLY_SPEED = 0.40,
+            TRANSMISSION_ROTATE_TO_DRIVE_SPEED = 0.275, // I personally think this should be slow enough that its stalls the motor
+            LAUNCHER_TURN_SLOWLY_SPEED = 0.275, // Was 40
             PICKUP_WHEELS_UNSTICK_BALL_SPEED = 0.2,
             // Timeouts and Durations in Seconds
             EXPEL_BALL_TIMEOUT = 1,
             UNSTICK_BALL_DURATION = 1,
-            TIME_REQUIRED_TO_EXTEND_ARM = 3,
+            TIME_REQUIRED_TO_EXTEND_ARM = 1, // PlaceHolder
             // Distance Variables
             TOO_CLOSE_DISTANCE = 0, // Placeholder
             TOO_FAR_DISTANCE = 0, // Placeholder

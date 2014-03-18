@@ -10,11 +10,11 @@ import ca._4343.max3.commands.camera.WaitForHot;
 //import ca._4343.max3.commands.drivetrain.TurnLeft;
 //import ca._4343.max3.commands.drivetrain.TurnRight;
 import ca._4343.max3.commandGroups.FireAndReloadSequence;
+import ca._4343.max3.commands.CommandBase;
 import ca._4343.max3.commands.drivetrain.DriveToDistance;
 import ca._4343.max3.commands.drivetrain.TurnToAngle;
 //import ca._4343.max3.commands.drivetrain.DriveReverse;
 import ca._4343.max3.commands.pickup.LoadBall;
-import ca._4343.util.Camera;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -27,7 +27,7 @@ public class DoubleBallAlternativeLeftSequence extends CommandGroup {
         addParallel(new WaitForHot(), RobotConstants.AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT);
         //addParallel(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
         addParallel(new DriveToDistance("forward", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FROM_GOAL));
-        if (Camera.isHotTarget()) {
+        if (CommandBase.camera.findTarget()) {
             addSequential(new FireAndReloadSequence());
             //addParallel(new DriveReverse(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
             addParallel(new DriveToDistance("reverse", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FOR_BALL_PICKUP));
