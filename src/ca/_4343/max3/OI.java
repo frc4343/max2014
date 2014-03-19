@@ -45,7 +45,7 @@ public class OI {
      * @return Y axis on controller with joystick dead zone compensation
      */
     public double getY() {
-        return Math.abs(xbox1.getRawAxis(1)) >= 0.2 ? xbox1.getRawAxis(1) : 0;
+        return Math.abs(xbox1.getRawAxis(1)) >= 0.2 ? -xbox1.getRawAxis(1) : 0;
     }
     
     //Joystick's

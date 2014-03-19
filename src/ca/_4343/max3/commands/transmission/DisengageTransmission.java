@@ -27,7 +27,11 @@ public class DisengageTransmission extends CommandBase {
      * Called repeatedly when this Command is scheduled to run
      */
     protected void execute() {
-        transmission.setNeutral();
+        if (!transmission.getNeutral()) {
+            transmission.setNeutral();
+        } else {
+            transmission.stop();
+        }
     }
     
     /**

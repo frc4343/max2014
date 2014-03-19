@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DoubleBallRightSequence extends CommandGroup {
     public DoubleBallRightSequence() {
-        if (CommandBase.camera.findTarget()) {
+        if (true) {
             addSequential(new FireAndReloadSequence());
             addSequential(new LoadBall());
             addSequential(new TurnLeft(), RobotConstants.AUTONOMOUS_TURN_DURATION);

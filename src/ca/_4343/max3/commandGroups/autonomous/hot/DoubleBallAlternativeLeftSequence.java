@@ -27,7 +27,7 @@ public class DoubleBallAlternativeLeftSequence extends CommandGroup {
         addParallel(new WaitForHot(), RobotConstants.AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT);
         //addParallel(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
         addParallel(new DriveToDistance("forward", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FROM_GOAL));
-        if (CommandBase.camera.findTarget()) {
+        if (true) {
             addSequential(new FireAndReloadSequence());
             //addParallel(new DriveReverse(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
             addParallel(new DriveToDistance("reverse", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FOR_BALL_PICKUP));

@@ -15,7 +15,7 @@ import ca._4343.util.Camera;
 public class WaitForHot extends CommandBase {
     
     public WaitForHot() {
-        requires(camera);
+        //requires(camera);
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +28,7 @@ public class WaitForHot extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return camera.findTarget();
+        return true;
     }
 
     // Called once after isFinished returns true

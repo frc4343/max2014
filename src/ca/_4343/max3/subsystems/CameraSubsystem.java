@@ -19,7 +19,7 @@ public class CameraSubsystem extends Subsystem {
     Camera camera = new Camera();
     
     public void initDefaultCommand() {
-        setDefaultCommand(new WaitForHot());
+        //setDefaultCommand(new WaitForHot());
     }
     
     public boolean findTarget() {

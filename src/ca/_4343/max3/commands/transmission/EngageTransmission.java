@@ -32,6 +32,8 @@ public class EngageTransmission extends CommandBase {
         if (!transmission.getDrive()) { // Extra check for launcher.turnSlowly();
             transmission.setDrive();
             launcher.turnSlowly();
+        } else {
+            transmission.stop();
         }
     }
     

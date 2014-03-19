@@ -40,7 +40,7 @@ public abstract class CommandBase extends Command {
     public static Lights lights = new Lights();
     public static RangeFinder rangeFinder = new RangeFinder();
     public static GyroSubsystem gyro = new GyroSubsystem();
-    public static CameraSubsystem camera = new CameraSubsystem();
+    //public static CameraSubsystem camera = new CameraSubsystem();
     
     public static void init() {
         // Must be here, don't delete
@@ -54,7 +54,7 @@ public abstract class CommandBase extends Command {
         SmartDashboard.putData(lights);
         SmartDashboard.putData(rangeFinder);
         SmartDashboard.putData(gyro);
-        SmartDashboard.putData(camera);
+        //SmartDashboard.putData(camera);
         // VIRTUAL BUTTONS
         SmartDashboard.putData("Engage Transmission", new EngageTransmission());
         SmartDashboard.putData("Launcher Full Down", new PullDownLauncher());

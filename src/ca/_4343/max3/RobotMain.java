@@ -44,7 +44,7 @@ public class RobotMain extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
-        Camera.init();
+        //Camera.init();
         
         pickAutonomous = new SendableChooser();
         pickAutonomous.addDefault("1 Ball Hot | Any Side", new SingleBallSequence());

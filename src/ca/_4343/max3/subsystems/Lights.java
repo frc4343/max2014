@@ -30,7 +30,7 @@ public class Lights extends Subsystem {
      * Always scan for range
      */
     public void initDefaultCommand() {
-        setDefaultCommand(new RangeDetector());
+        //setDefaultCommand(new RangeDetector());
     }
     
     /**
