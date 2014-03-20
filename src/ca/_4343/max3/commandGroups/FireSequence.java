@@ -22,7 +22,7 @@ public class FireSequence extends CommandGroup {
      */
     public FireSequence() {
         addParallel(new ExtendArm());
-        addParallel(new UnstickBall());
+        addSequential(new UnstickBall());
         addSequential(new DisengageTransmission());
     }
 }
