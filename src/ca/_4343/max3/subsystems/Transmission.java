@@ -42,11 +42,7 @@ public class Transmission extends Subsystem {
      * Turns the transmission motor neutral position
      */
     public void setNeutral() {
-        if(!getNeutral()) {
-            transmissionMotor.set(1);
-        } else {
-            stop(); // Incase button is repeatly pressed
-        }
+        transmissionMotor.set(getNeutral() ? 0 : 1);
     }
     
     /**
@@ -61,11 +57,7 @@ public class Transmission extends Subsystem {
      * Turns the transmission motor to drive position
      */
     public void setDrive() {
-        if(!getDrive()) {
-            transmissionMotor.set(RobotConstants.TRANSMISSION_ROTATE_TO_DRIVE_SPEED);
-        } else {
-            stop(); // Incase button is repeatly pressed
-        }
+        transmissionMotor.set(getDrive() ? 0 : RobotConstants.TRANSMISSION_ROTATE_TO_DRIVE_SPEED);
     }
     
     /**

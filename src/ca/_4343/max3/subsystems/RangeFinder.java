@@ -5,6 +5,7 @@
 package ca._4343.max3.subsystems;
 
 import ca._4343.RobotMap;
+import ca._4343.max3.commands.GetRangeAndAngle;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,6 +23,7 @@ public class RangeFinder extends Subsystem {
      * There is no default state for this subsystem
      */
     public void initDefaultCommand() {
+        setDefaultCommand(new GetRangeAndAngle());
     }
     
     /**

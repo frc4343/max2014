@@ -5,7 +5,6 @@
 package ca._4343.max3.commands.camera;
 
 import ca._4343.max3.commands.CommandBase;
-import ca._4343.util.Camera;
 
 /**
  *

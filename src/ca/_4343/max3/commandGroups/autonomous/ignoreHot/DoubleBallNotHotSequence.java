@@ -23,6 +23,6 @@ public class DoubleBallNotHotSequence extends CommandGroup {
         addSequential(new FireAndReloadSequence());
         addSequential(new LoadBall());
         addParallel(new FireAndReloadSequence());
-        addParallel(new DriveForward());
+        addSequential(new DriveForward());
     }
 }

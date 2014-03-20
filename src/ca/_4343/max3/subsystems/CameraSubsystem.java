@@ -23,6 +23,7 @@ public class CameraSubsystem extends Subsystem {
     }
     
     public boolean findTarget() {
-        return camera.findTarget();
+        return false;
+        //return camera.findTarget();
     } 
 }

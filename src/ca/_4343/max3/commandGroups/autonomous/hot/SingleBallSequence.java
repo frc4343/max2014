@@ -19,7 +19,7 @@ public class SingleBallSequence extends CommandGroup {
     
     public SingleBallSequence() {
         addParallel(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
-        addParallel(new WaitForHot(), RobotConstants.AUTONOMOUS_SINGLE_BALL_HOT_GOAL_TIMEOUT);
+        addSequential(new WaitForHot(), RobotConstants.AUTONOMOUS_SINGLE_BALL_HOT_GOAL_TIMEOUT);
         addSequential(new FireAndReloadSequence());
     }
 }

@@ -22,7 +22,7 @@ public class PickupBallSequence extends CommandGroup {
      */
     public PickupBallSequence() {
         addParallel(new ExtendArm());
-        addParallel(new LoadBall());
+        addSequential(new LoadBall());
         addSequential(new RetractArm());
     }
 }

@@ -12,8 +12,8 @@ package ca._4343;
 public class RobotConstants {
 
     public static final double // Motor Speeds
-            TRANSMISSION_ROTATE_TO_DRIVE_SPEED = 0.15, // I personally think this should be slow enough that its stalls the motor
-            LAUNCHER_TURN_SLOWLY_SPEED = 0.275, // Was 40
+            TRANSMISSION_ROTATE_TO_DRIVE_SPEED = 0.15,
+            LAUNCHER_TURN_SLOWLY_SPEED = 0.275,
             PICKUP_WHEELS_UNSTICK_BALL_SPEED = 0.2,
             // Timeouts and Durations in Seconds
             EXPEL_BALL_TIMEOUT = 1,

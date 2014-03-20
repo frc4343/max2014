@@ -26,12 +26,12 @@ public class DoubleBallAlternativeRightSequence extends CommandGroup {
     public DoubleBallAlternativeRightSequence() {
         addParallel(new WaitForHot(), RobotConstants.AUTONOMOUS_DOUBLE_BALL_HOT_GOAL_TIMEOUT);
         //addParallel(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
-        addParallel(new DriveToDistance("forward", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FROM_GOAL)); // Either using a range finder, or timer (above)
+        addSequential(new DriveToDistance("forward", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FROM_GOAL)); // Either using a range finder, or timer (above)
         if (true) {
             addSequential(new FireAndReloadSequence());
             //addParallel(new DriveReverse(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
             addParallel(new DriveToDistance("reverse", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FOR_BALL_PICKUP));
-            addParallel(new LoadBall());
+            addSequential(new LoadBall());
             //addSequential(new TurnLeft(), RobotConstants.AUTONOMOUS_TURN_DURATION);
             addSequential(new TurnToAngle("left", RobotConstants.AUTONOMOUS_TURN_TO_ANGLE));
             //addSequential(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
@@ -45,7 +45,7 @@ public class DoubleBallAlternativeRightSequence extends CommandGroup {
             addSequential(new TurnToAngle("right", RobotConstants.AUTONOMOUS_TURN_TO_ANGLE));
             //addParallel(new DriveReverse(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
             addParallel(new DriveToDistance("reverse", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FOR_BALL_PICKUP));
-            addParallel(new LoadBall());
+            addSequential(new LoadBall());
             //addSequential(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
             addSequential(new DriveToDistance("forward", RobotConstants.AUTONOMOUS_OPTIMAL_DISTANCE_FROM_GOAL));
             addSequential(new FireAndReloadSequence());

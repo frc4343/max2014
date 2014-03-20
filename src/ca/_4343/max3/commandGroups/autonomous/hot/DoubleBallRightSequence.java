@@ -34,7 +34,7 @@ public class DoubleBallRightSequence extends CommandGroup {
             addSequential(new RetractArm());
             addSequential(new TurnRight(), RobotConstants.AUTONOMOUS_TURN_DURATION);
             addParallel(new ExtendArm());
-            addParallel(new LoadBall());
+            addSequential(new LoadBall());
             addSequential(new FireAndReloadSequence());
             addSequential(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
         }

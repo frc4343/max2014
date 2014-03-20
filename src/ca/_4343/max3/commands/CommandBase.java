@@ -16,6 +16,8 @@ import ca._4343.max3.subsystems.PickupArm;
 import ca._4343.max3.subsystems.PickupWheels;
 import ca._4343.max3.subsystems.RangeFinder;
 import ca._4343.max3.subsystems.Transmission;
+import ca._4343.util.FindTarget;
+import ca._4343.util.FindTarget.TargetReport;
 import edu.wpi.first.wpilibj.DriverStation;
 
 /**
@@ -40,6 +42,7 @@ public abstract class CommandBase extends Command {
     public static Lights lights = new Lights();
     public static RangeFinder rangeFinder = new RangeFinder();
     public static GyroSubsystem gyro = new GyroSubsystem();
+    //public static FindTarget vision = new FindTarget();
     //public static CameraSubsystem camera = new CameraSubsystem();
     
     public static void init() {

@@ -8,11 +8,12 @@ import ca._4343.max3.commands.CommandBase;
 
 /**
  * Puts the transmission motor into drive
+ *
  * @author Brian Ho <www.4343.ca>
  * @author Tedi Papajorgji <www.4343.ca>
  */
 public class EngageTransmission extends CommandBase {
-    
+
     public EngageTransmission() {
         requires(launcher);
         requires(transmission);
@@ -25,26 +26,25 @@ public class EngageTransmission extends CommandBase {
     }
 
     /**
-     * Called repeatedly when this Command is scheduled to run
-     * Turns launcher slowly and sets transmission to drive
+     * Called repeatedly when this Command is scheduled to run Turns launcher
+     * slowly and sets transmission to drive
      */
     protected void execute() {
-        if (!transmission.getDrive()) { // Extra check for launcher.turnSlowly();
-            transmission.setDrive();
+        transmission.setDrive();
+        if (!transmission.getDrive()) { // Prevent Grinding
             launcher.turnSlowly();
-        } else {
-            transmission.stop();
         }
     }
-    
+
     /**
      * Stops the command when transmission is in drive state
+     *
      * @return True when transmission is in drive
      */
     protected boolean isFinished() {
         return transmission.getDrive();
     }
-    
+
     /**
      * Called once after isFinished returns true
      */
