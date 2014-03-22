@@ -5,8 +5,10 @@ import ca._4343.max3.commandGroups.FireAndReloadSequence;
 import ca._4343.max3.commandGroups.FireSequence;
 import ca._4343.max3.commandGroups.PickupBallSequence;
 import ca._4343.max3.commandGroups.PullDownLauncherSequence;
+import ca._4343.max3.commands.launcher.PullDownLauncher;
 import ca._4343.max3.commands.pickup.ExpelBall;
 import ca._4343.max3.commands.pickup.RetractArm;
+import ca._4343.max3.commands.transmission.DisengageTransmission;
 import ca._4343.max3.commands.transmission.TransmissionDoNothing;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -25,6 +27,7 @@ public class OI {
         xbox1_X.toggleWhenPressed(new ExpelBall());
         xbox1_Y.toggleWhenPressed(new PickupBallSequence());
         xbox1_A.whenPressed(new FireAndReloadSequence());
+        xbox1_L1.whenPressed(new PullDownLauncherSequence());
         
         
         // Xbox 2 Buttons

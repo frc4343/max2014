@@ -27,6 +27,6 @@ public class Basket extends Subsystem {
      * @return True if ball is inside basket
      */
     public boolean isBallLoaded() {
-        return ballLoaded.get();
+        return !ballLoaded.get();
     }
 }

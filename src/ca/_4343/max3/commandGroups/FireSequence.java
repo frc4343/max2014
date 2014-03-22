@@ -21,8 +21,8 @@ public class FireSequence extends CommandGroup {
      * the ball by disengaging the transmission
      */
     public FireSequence() {
-        addParallel(new ExtendArm());
-        addSequential(new UnstickBall());
+        //addParallel(new ExtendArm());
+        addParallel(new UnstickBall());
         addSequential(new DisengageTransmission());
     }
 }

@@ -19,6 +19,7 @@ public class RobotConstants {
             EXPEL_BALL_TIMEOUT = 1,
             UNSTICK_BALL_DURATION = 1,
             TIME_REQUIRED_TO_EXTEND_ARM = 1, // PlaceHolder
+            TIME_WAIT_AFTER_SHOT = 3,
             // Distance Variables
             TOO_CLOSE_DISTANCE = 0, // Placeholder
             TOO_FAR_DISTANCE = 0, // Placeholder

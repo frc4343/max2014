@@ -1,35 +1,35 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team 4343
+ * Visit us at www.4343.ca
  */
-package ca._4343.max3.commands;
+package ca._4343.max3.commands.launcher;
+
+import ca._4343.RobotConstants;
+import ca._4343.max3.commands.CommandBase;
 
 /**
  *
- * @author brianho
+ * @author Tedi Papajorgji <www.4343.ca>
  */
-public class GetRangeAndAngle extends CommandBase {
+public class WaitAfterShooting extends CommandBase {
     
-    public GetRangeAndAngle() {
-        requires(rangeFinder);
-        requires(gyro);
+    public WaitAfterShooting() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        gyro.reset();
+        this.setTimeout(RobotConstants.TIME_WAIT_AFTER_SHOT);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("range: " + rangeFinder.getDistanceInInches());
-        System.out.println("angle: " + gyro.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return this.isTimedOut();
     }
 
     // Called once after isFinished returns true

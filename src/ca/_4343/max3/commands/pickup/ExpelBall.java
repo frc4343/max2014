@@ -32,6 +32,7 @@ public class ExpelBall extends CommandBase {
      * in reverse to expel the ball.
      */
     protected void execute() {
+        System.out.println("Executing expell ball command");
         pickupArm.retract();
         pickupWheels.expel();
     }
@@ -48,6 +49,7 @@ public class ExpelBall extends CommandBase {
      * Called once after isFinished returns true
      */
     protected void end() {
+        System.out.println("Expellball is finished");
     }
 
     /**

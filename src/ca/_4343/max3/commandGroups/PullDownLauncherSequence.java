@@ -5,6 +5,7 @@
 package ca._4343.max3.commandGroups;
 
 import ca._4343.max3.commands.launcher.PullDownLauncher;
+import ca._4343.max3.commands.launcher.WaitAfterShooting;
 import ca._4343.max3.commands.transmission.EngageTransmission;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
