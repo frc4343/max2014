@@ -7,6 +7,7 @@ import ca._4343.max3.commandGroups.PickupBallSequence;
 import ca._4343.max3.commandGroups.PullDownLauncherSequence;
 import ca._4343.max3.commands.launcher.PullDownLauncher;
 import ca._4343.max3.commands.pickup.ExpelBall;
+import ca._4343.max3.commands.pickup.ExtendArm;
 import ca._4343.max3.commands.pickup.RetractArm;
 import ca._4343.max3.commands.transmission.DisengageTransmission;
 import ca._4343.max3.commands.transmission.TransmissionDoNothing;
@@ -24,18 +25,20 @@ public class OI {
     
     public OI() {
         // Xbox 1 Buttons
-        xbox1_X.toggleWhenPressed(new ExpelBall());
+        xbox1_B.toggleWhenPressed(new ExpelBall());
         xbox1_Y.toggleWhenPressed(new PickupBallSequence());
         xbox1_A.whenPressed(new FireAndReloadSequence());
+        xbox1_X.whenPressed(new TransmissionDoNothing());
+        xbox1_R1.whenPressed(new FireSequence());
         xbox1_L1.whenPressed(new PullDownLauncherSequence());
         
         
         // Xbox 2 Buttons
-        xbox2_L1.whenPressed(new PullDownLauncherSequence());
-        xbox2_R1.whenPressed(new FireSequence());
-        xbox2_A.whenPressed(new TransmissionDoNothing());
-        xbox1_B.whenPressed(new RetractArm());
-        xbox2_Y.whenPressed(new FireAndReloadSequence());
+        xbox2_X.whenPressed(new TransmissionDoNothing());
+        xbox2_A.whenPressed(new FireSequence()); //
+        xbox2_B.whenPressed(new PullDownLauncherSequence());
+        xbox2_R1.whenPressed(new ExtendArm());
+        xbox2_L1.whenPressed(new RetractArm());
         
     }
     /**
