@@ -5,6 +5,7 @@
 
 package ca._4343.max3.commands.Camera;
 
+import ca._4343.util.FindTarget;
 import ca._4343.util.FindTarget.TargetReport;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,17 +15,26 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class WaitForHot extends Command {
 
-    TargetReport targetReport;
+    FindTarget findTarget;
+    TargetReport tg;
     protected void initialize() {
+        findTarget = new FindTarget();
     }
 
     protected void execute() {
+        tg = findTarget.giveMeATarget();
     }
 
     protected boolean isFinished() {
+        if(tg.Hot) {
+            return true;
+        }
+        return false;
     }
 
     protected void end() {
+        findTarget = null;
+        tg = null;
     }
 
     protected void interrupted() {

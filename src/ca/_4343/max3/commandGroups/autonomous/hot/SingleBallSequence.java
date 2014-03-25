@@ -7,6 +7,7 @@ package ca._4343.max3.commandGroups.autonomous.hot;
 import ca._4343.RobotConstants;
 import ca._4343.max3.commands.drivetrain.DriveForward;
 import ca._4343.max3.commandGroups.FireAndReloadSequence;
+import ca._4343.max3.commands.Camera.WaitForHot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
