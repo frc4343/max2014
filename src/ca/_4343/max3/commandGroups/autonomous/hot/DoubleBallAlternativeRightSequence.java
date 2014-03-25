@@ -5,12 +5,10 @@
 package ca._4343.max3.commandGroups.autonomous.hot;
 
 import ca._4343.RobotConstants;
-import ca._4343.max3.commands.camera.WaitForHot;
 //import ca._4343.max3.commands.drivetrain.DriveForward;
 //import ca._4343.max3.commands.drivetrain.TurnLeft;
 //import ca._4343.max3.commands.drivetrain.TurnRight;
 import ca._4343.max3.commandGroups.FireAndReloadSequence;
-import ca._4343.max3.commands.CommandBase;
 import ca._4343.max3.commands.drivetrain.DriveToDistance;
 import ca._4343.max3.commands.drivetrain.TurnToAngle;
 //import ca._4343.max3.commands.drivetrain.DriveReverse;

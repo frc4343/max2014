@@ -8,6 +8,7 @@ package ca._4343.max3.commandGroups.autonomous;
 /**
  *
  * @author Tedi Papajorgji <www.4343.ca>
+ * @author Brian Ho <www.4343.ca>
  */
 public class SelectAutonomous {
     /* Java 1.3 is so bad...........

@@ -42,13 +42,8 @@ public class RobotMain extends IterativeRobot {
      */
     public void robotInit() {
         initializeVirtualButtons();
-        // instantiate the command used for the autonomous period
-        //autonomousCommand = new ExampleCommand();
-
-        // Initialize all subsystems
         CommandBase.init();
-        //Camera.init();
-        
+        Camera.init();
         
         
     }

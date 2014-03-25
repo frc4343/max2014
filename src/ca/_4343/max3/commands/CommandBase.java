@@ -7,7 +7,6 @@ import ca._4343.max3.commands.launcher.PullDownLauncher;
 import ca._4343.max3.commands.transmission.EngageTransmission;
 import ca._4343.max3.subsystems.AirCompressor;
 import ca._4343.max3.subsystems.Basket;
-import ca._4343.max3.subsystems.CameraSubsystem;
 import ca._4343.max3.subsystems.DriveTrain;
 import ca._4343.max3.subsystems.GyroSubsystem;
 import ca._4343.max3.subsystems.Launcher;
@@ -16,8 +15,6 @@ import ca._4343.max3.subsystems.PickupArm;
 import ca._4343.max3.subsystems.PickupWheels;
 import ca._4343.max3.subsystems.RangeFinder;
 import ca._4343.max3.subsystems.Transmission;
-import ca._4343.util.FindTarget;
-import ca._4343.util.FindTarget.TargetReport;
 import edu.wpi.first.wpilibj.DriverStation;
 
 /**
