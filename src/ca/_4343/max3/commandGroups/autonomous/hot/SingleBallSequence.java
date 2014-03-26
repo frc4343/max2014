@@ -18,8 +18,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SingleBallSequence extends CommandGroup {
     
     public SingleBallSequence() {
-        addParallel(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
-        addSequential(new WaitForHot(), RobotConstants.AUTONOMOUS_SINGLE_BALL_HOT_GOAL_TIMEOUT);
+        RobotConstants.setAutonomousStatus("Single Ball Sequence started");
+        addSequential(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
+        //addSequential(new WaitForHot(), RobotConstants.AUTONOMOUS_SINGLE_BALL_HOT_GOAL_TIMEOUT);
         addSequential(new FireAndReloadSequence());
     }
 }

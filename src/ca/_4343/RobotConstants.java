@@ -32,4 +32,23 @@ public class RobotConstants {
             AUTONOMOUS_OPTIMAL_DISTANCE_FROM_GOAL = 300, // placeholder in inches
             AUTONOMOUS_OPTIMAL_DISTANCE_FOR_BALL_PICKUP = 500, // placeholder in inches
             AUTONOMOUS_TURN_TO_ANGLE = 45; // placeholder in degrees
+    
+    private static String[] autonomousStatuses = {"NAN", "NAN", "NAN"};
+    public static void setAutonomousStatus(String status) {
+       String backup1 = autonomousStatuses[0];
+       String backup2 = autonomousStatuses[1];
+       autonomousStatuses[0] = status;
+       autonomousStatuses[1] = backup1;
+       autonomousStatuses[2] = backup2;
+    }
+    
+    public static String getAutonomousStatus() {
+        String status = "";
+        status = autonomousStatuses[0];
+        status = status + "\n" + autonomousStatuses[1];
+        status = status + "\n" + autonomousStatuses[2];
+        return status;
+    }
+    
+    
 }

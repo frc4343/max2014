@@ -8,6 +8,7 @@
 package ca._4343.max3;
 
 
+import ca._4343.RobotConstants;
 import ca._4343.max3.commandGroups.autonomous.SelectAutonomous;
 import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallAlternativeLeftSequence;
 import ca._4343.max3.commandGroups.autonomous.hot.DoubleBallAlternativeRightSequence;
@@ -43,15 +44,18 @@ public class RobotMain extends IterativeRobot {
     public void robotInit() {
         initializeVirtualButtons();
         CommandBase.init();
-        Camera.init();
-        
+        //Camera.init();
+        SmartDashboard.putString("Autonomous Status", RobotConstants.getAutonomousStatus());
         
     }
 
     public void autonomousInit() {
         autonomousCommandGroup = getSelectedCommandGroup((SelectAutonomous) pickAutonomous.getSelected());
-        if(autonomousCommandGroup != null)
+        if(autonomousCommandGroup != null) {
             autonomousCommandGroup.start();
+        } else {
+            RobotConstants.setAutonomousStatus("Autonomous command is null");
+        }
     }
     
     private CommandGroup getSelectedCommandGroup(SelectAutonomous sa) {
@@ -68,16 +72,22 @@ public class RobotMain extends IterativeRobot {
             int autonomousType = Integer.parseInt(sa.toString());
             switch(autonomousType) {
                 case 1:
+                    RobotConstants.setAutonomousStatus("Single Ball Sequence Selected");
                     return new SingleBallSequence();
                 case 2:
+                    RobotConstants.setAutonomousStatus("Double Ball Not Hot Sequence Selected");
                     return new DoubleBallNotHotSequence();
                 case 3:
+                    RobotConstants.setAutonomousStatus("Double Ball Left Sequence Selected");
                     return new DoubleBallLeftSequence();
                 case 4:
+                    RobotConstants.setAutonomousStatus("Double Ball Right Sequence Selected");
                     return new DoubleBallRightSequence();
                 case 5:
+                    RobotConstants.setAutonomousStatus("Double Ball Alternative Left Sequence Selected");
                     return new DoubleBallAlternativeLeftSequence();
                 case 6:
+                    RobotConstants.setAutonomousStatus("Double Ball Alternative Right Sequence Selected");
                     return new DoubleBallAlternativeRightSequence();
             }
         }
@@ -89,6 +99,7 @@ public class RobotMain extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         CommandBase.ds = this.m_ds;
+        SmartDashboard.putString("Autonomous Status", RobotConstants.getAutonomousStatus());
         Scheduler.getInstance().run();
     }
 

@@ -23,7 +23,7 @@ public class DriveForward extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.arcadeDrive(1, 0);
+        driveTrain.arcadeDrive(-0.65, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
