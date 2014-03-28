@@ -38,7 +38,7 @@ public class FindTarget {
     final int LR_SCORE_LIMIT = 50;
 
     // Minimum area of particles to be considered.
-    final int AREA_MINIMUM = 150; // Used to be 140 in tedi's first version; don't know if needs changing.
+    final int AREA_MINIMUM = 130; // Used to be 140 in tedi's first version; don't know if needs changing.
 
     // Maximum number of particles to process.
     final int MAX_PARTICLES = 8;
@@ -76,7 +76,7 @@ public class FindTarget {
         int verticalTargetCount, horizontalTargetCount;
         try {
             ColorImage image = camera.getImage();
-            BinaryImage thresholdImage = image.thresholdHSV(78, 91, 243, 255, 100, 255); // Keep only green objects.
+            BinaryImage thresholdImage = image.thresholdHSV(81, 96, 243, 255, 246, 255); // Keep only green objects.
             BinaryImage filteredImage = thresholdImage.particleFilter(cc);           // Filter out small particles.
 
             // Iterate through each particle and score to see if it is a .

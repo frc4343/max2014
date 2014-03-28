@@ -44,7 +44,7 @@ public class RobotMain extends IterativeRobot {
     public void robotInit() {
         initializeVirtualButtons();
         CommandBase.init();
-        //Camera.init();
+        Camera.init();
         SmartDashboard.putString("Autonomous Status", RobotConstants.getAutonomousStatus());
         
     }

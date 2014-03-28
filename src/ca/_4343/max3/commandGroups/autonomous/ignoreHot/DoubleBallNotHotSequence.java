@@ -10,7 +10,9 @@ import ca._4343.max3.commandGroups.FireAndReloadSequence;
 import ca._4343.max3.commandGroups.PullDownLauncherSequence;
 import ca._4343.max3.commands.drivetrain.DriveBackwards;
 import ca._4343.max3.commands.launcher.WaitAfterShooting;
+import ca._4343.max3.commands.pickup.ExtendArm;
 import ca._4343.max3.commands.pickup.LoadBall;
+import ca._4343.max3.commands.pickup.UnstickBall;
 import ca._4343.max3.commands.transmission.DisengageTransmission;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -25,7 +27,10 @@ public class DoubleBallNotHotSequence extends CommandGroup {
      * ball and drive forward
      */
     public DoubleBallNotHotSequence() {
-        addSequential(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
+        addParallel(new DriveForward(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);
+        addParallel(new UnstickBall());
+        addSequential(new ExtendArm());
+        
         //EXTEND THE GOD DAMN ARM HERE PLEASE FK
         addSequential(new DisengageTransmission());
         addParallel(new DriveBackwards(), RobotConstants.AUTONOMOUS_DRIVE_DURATION);

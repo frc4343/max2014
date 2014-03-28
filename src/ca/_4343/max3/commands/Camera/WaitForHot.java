@@ -5,6 +5,7 @@
 
 package ca._4343.max3.commands.Camera;
 
+import ca._4343.RobotConstants;
 import ca._4343.util.FindTarget;
 import ca._4343.util.FindTarget.TargetReport;
 import edu.wpi.first.wpilibj.command.Command;
@@ -27,6 +28,7 @@ public class WaitForHot extends Command {
 
     protected boolean isFinished() {
         if(tg.Hot) {
+            RobotConstants.waitAfterDetectedVision = 3;
             return true;
         }
         return false;

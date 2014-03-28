@@ -24,7 +24,8 @@ public class RobotConstants {
             TOO_CLOSE_DISTANCE = 0, // Placeholder
             TOO_FAR_DISTANCE = 0, // Placeholder
             // Autonomous Variables
-            AUTONOMOUS_DRIVE_DURATION = 1,
+            AUTONOMOUS_DRIVE_DURATION = 2.8,
+            AUTONOMOUS_WAIT__BEFORE_STARTING = 0.5,
             AUTONOMOUS_TURN_DURATION = 0.4,
             AUTONOMOUS_MOTOR_TURN_SPEED = 0.65,
             AUTONOMOUS_SINGLE_BALL_HOT_GOAL_TIMEOUT = 6.5,
@@ -49,6 +50,8 @@ public class RobotConstants {
         status = status + "\n" + autonomousStatuses[2];
         return status;
     }
+    
+    public static double waitAfterDetectedVision = 0;
     
     
 }

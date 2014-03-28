@@ -23,6 +23,6 @@ public class PickupBallSequence extends CommandGroup {
     public PickupBallSequence() {
         addParallel(new ExtendArm());
         addSequential(new LoadBall());
-        addSequential(new RetractArm());
+        //addSequential(new RetractArm());
     }
 }

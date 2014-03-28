@@ -35,7 +35,7 @@ public class Transmission extends Subsystem {
      * @return True if transmission is in neutral position
      */
     public boolean getNeutral() {
-        return !neutral.get(); // remove ! for actual competition
+        return neutral.get();
     }
     
     /**

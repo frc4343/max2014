@@ -5,11 +5,10 @@ import ca._4343.max3.commandGroups.FireAndReloadSequence;
 import ca._4343.max3.commandGroups.FireSequence;
 import ca._4343.max3.commandGroups.PickupBallSequence;
 import ca._4343.max3.commandGroups.PullDownLauncherSequence;
-import ca._4343.max3.commands.launcher.PullDownLauncher;
+import ca._4343.max3.commands.VisionTest;
 import ca._4343.max3.commands.pickup.ExpelBall;
 import ca._4343.max3.commands.pickup.ExtendArm;
 import ca._4343.max3.commands.pickup.RetractArm;
-import ca._4343.max3.commands.transmission.DisengageTransmission;
 import ca._4343.max3.commands.transmission.TransmissionDoNothing;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -31,6 +30,7 @@ public class OI {
         xbox1_X.whenPressed(new TransmissionDoNothing());
         xbox1_R1.whenPressed(new FireSequence());
         xbox1_L1.whenPressed(new PullDownLauncherSequence());
+        xbox1_START.whileHeld(new VisionTest());
         
         
         // Xbox 2 Buttons
@@ -39,6 +39,7 @@ public class OI {
         xbox2_B.whenPressed(new PullDownLauncherSequence());
         xbox2_R1.whenPressed(new ExtendArm());
         xbox2_L1.whenPressed(new RetractArm());
+        xbox2_START.whileHeld(new VisionTest());
         
     }
     /**

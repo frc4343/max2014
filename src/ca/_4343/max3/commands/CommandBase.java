@@ -3,8 +3,6 @@ package ca._4343.max3.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import ca._4343.max3.OI;
-import ca._4343.max3.commands.launcher.PullDownLauncher;
-import ca._4343.max3.commands.transmission.EngageTransmission;
 import ca._4343.max3.subsystems.AirCompressor;
 import ca._4343.max3.subsystems.Basket;
 import ca._4343.max3.subsystems.DriveTrain;
@@ -55,9 +53,6 @@ public abstract class CommandBase extends Command {
         SmartDashboard.putData(rangeFinder);
         SmartDashboard.putData(gyro);
         //SmartDashboard.putData(camera);
-        // VIRTUAL BUTTONS
-        SmartDashboard.putData("Engage Transmission", new EngageTransmission());
-        SmartDashboard.putData("Launcher Full Down", new PullDownLauncher());
     }
 
     public CommandBase(String name) {
